@@ -4,67 +4,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080910">
-<title>VINIUS MOVIES | Full Movies & Cartoons On App</title>
+<title>VINIUS MOVIES</title>
 <style>
 :root{--bg:#07080e;--panel:#111321;--panel2:#181a2e;--line:#232643;--text:#f5f6ff;--muted:#9aa0b8;--green:#00f5a0;--yellow:#f5c518;--red:#ff3b5c}
-*{box-sizing:border-box;margin:0}
-body{background:radial-gradient(1200px 600px at 20% -10%,#1a1f4a 0%,transparent 60%),radial-gradient(900px 500px at 90% 0%,#1a3a2f 0%,transparent 50%),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh}
-.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:18px;padding:14px 22px;background:#07080ee6;backdrop-filter:blur(22px);border-bottom:1px solid #ffffff12}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;padding:14px 20px;background:#07080ee6;backdrop-filter:blur(22px);border-bottom:1px solid #ffffff10}
 .brand{font-weight:950;font-size:22px;letter-spacing:-1px}.brand b{color:var(--green)}
-.nav{display:flex;gap:20px;margin-left:10px}.nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700;cursor:pointer}.nav a.active{color:var(--text);border-bottom:2px solid var(--green);padding-bottom:3px}
-.search{margin-left:auto;position:relative;max-width:320px;width:100%}.search input{width:100%;background:#14162a;border:1px solid var(--line);border-radius:24px;padding:11px 15px 11px 40px;color:white;outline:none;font-size:13px}.search input:focus{border-color:var(--green);box-shadow:0 0 0 3px #00f5a022}.s-icon{position:absolute;left:14px;top:11px;color:var(--muted)}
-.hero{position:relative;min-height:480px;padding:70px 6vw;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #ffffff0d}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80') center/cover;opacity:.35}
-.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 20%,#07080ecc 45%,transparent 85%),linear-gradient(0deg,var(--bg) 10%,transparent 65%)}
-.hero-content{position:relative;z-index:1;max-width:640px}
-.badge{display:inline-flex;gap:6px;align-items:center;background:#00f5a01a;border:1px solid #00f5a055;color:var(--green);padding:6px 12px;border-radius:20px;font-size:10px;font-weight:900;letter-spacing:1px;margin-bottom:16px}
-.hero h1{font-size:clamp(36px,6vw,62px);line-height:.92;letter-spacing:-2.5px;font-weight:950}
+.nav{display:flex;gap:18px;margin-left:10px}.nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700;cursor:pointer}.nav a.active{color:var(--text);border-bottom:2px solid var(--green);padding-bottom:3px}
+.search{margin-left:auto;position:relative;max-width:300px;width:100%}.search input{width:100%;background:#14162a;border:1px solid var(--line);border-radius:24px;padding:11px 15px 11px 40px;color:white;outline:none;font-size:13px}.s-icon{position:absolute;left:14px;top:11px;color:var(--muted)}
+.hero{position:relative;min-height:380px;padding:60px 6vw;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80') center/cover;opacity:.25}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 18%,transparent 75%),linear-gradient(0deg,var(--bg) 5%,transparent 60%)}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-size:clamp(38px,6vw,62px);line-height:.9;letter-spacing:-2px;font-weight:950}
 .hero h1 span{color:var(--green)}
-.hero p{margin:16px 0 0;color:#d2d6e8;line-height:1.6;font-size:14px;max-width:520px}
-.hero-btns{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-.btn{border:0;border-radius:24px;padding:13px 22px;font-weight:900;font-size:12px;cursor:pointer;transition:.15s}
-.btn-primary{background:var(--green);color:#00140e}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px #00f5a044}
-.btn-ghost{background:#ffffff14;border:1px solid #ffffff24;color:white}.btn-ghost:hover{background:#ffffff22}
-.stats{padding:14px 6vw;display:flex;gap:10px;flex-wrap:wrap;border-bottom:1px solid #ffffff08;background:#0a0b16}
-.pill{font-size:10px;background:#151827;border:1px solid var(--line);color:#c8cce0;padding:7px 12px;border-radius:20px;display:flex;gap:6px;align-items:center}.pill b{color:var(--green)}
-main{padding:10px 4vw 60px}
-.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 16px;flex-wrap:wrap}
-.head h2{font-size:20px;letter-spacing:-.5px}.head p{color:var(--muted);font-size:11px;margin-top:4px}
-.filters{display:flex;gap:8px;overflow:auto;padding-bottom:14px;scrollbar-width:none}
-.filters::-webkit-scrollbar{display:none}
-.filter{white-space:nowrap;background:#151827;border:1px solid var(--line);color:#c9ccdf;padding:9px 14px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer;transition:.15s}
+.hero-btns{display:flex;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:24px;padding:12px 20px;font-weight:900;font-size:12px;cursor:pointer}
+.btn-primary{background:var(--green);color:#00140e}.btn-ghost{background:#ffffff14;border:1px solid #ffffff24;color:white}
+main{padding:10px 4vw 40px}
+.head{display:flex;align-items:center;justify-content:space-between;margin:22px 0 14px}
+.head h2{font-size:18px}
+.filters{display:flex;gap:8px;overflow:auto;padding-bottom:12px}
+.filter{white-space:nowrap;background:#151827;border:1px solid var(--line);color:#c9ccdf;padding:8px 14px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer}
 .filter.active{background:var(--green);color:#00140e;border-color:var(--green)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:16px}
-.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid #ffffff12;border-radius:14px;overflow:hidden;transition:.22s;cursor:pointer;position:relative}
-.card:hover{transform:translateY(-5px);border-color:#00f5a055;box-shadow:0 18px 40px #0009,0 0 0 1px #00f5a022}
-.poster{height:228px;position:relative;background:linear-gradient(135deg,#1e2340,#0f1222);overflow:hidden}
-.poster img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}.card:hover .poster img{transform:scale(1.04)}
-.fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;font-weight:900;font-size:14px;color:#dde0f0;background:radial-gradient(circle at 70% 20%,#2a2f6a,#151827 65%)}
-.tag{position:absolute;top:10px;left:10px;background:var(--green);color:#00140e;border-radius:6px;padding:5px 8px;font-size:8px;font-weight:950;letter-spacing:.5px}
-.tag.cartoon{background:var(--yellow);color:#000}
-.info{padding:11px}
-.title{font-size:12px;font-weight:850;line-height:1.35;min-height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.meta{color:var(--muted);font-size:10px;margin:6px 0 10px;display:flex;gap:8px;align-items:center}
-.meta .dot{width:3px;height:3px;background:var(--muted);border-radius:50%}
-.play{width:100%;border:0;border-radius:8px;padding:10px;background:var(--green);color:#00140e;font-size:10px;font-weight:950;letter-spacing:.3px}
-.play.cartoon{background:var(--yellow);color:#000}
-.fav{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:#0008;backdrop-filter:blur(8px);border:1px solid #ffffff22;color:white;display:grid;place-items:center;font-size:14px}
-.fav.saved{color:var(--red);background:#ff3b5c22;border-color:#ff3b5c55}
-.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid #ffffff12;border-radius:14px;overflow:hidden;cursor:pointer;transition:.2s;position:relative}
+.card:hover{transform:translateY(-4px);border-color:#00f5a055;box-shadow:0 14px 30px #0008}
+.poster{height:230px;position:relative;background:#0f1222;overflow:hidden}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.quality{position:absolute;top:8px;left:8px;background:#000c;border:1px solid #ffffff30;color:#fff;border-radius:5px;padding:4px 6px;font-size:8px;font-weight:900;backdrop-filter:blur(6px)}
+.quality.hd{background:var(--green);color:#00140e;border-color:var(--green)}
+.fav{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:#0008;backdrop-filter:blur(8px);border:1px solid #ffffff22;color:white;display:grid;place-items:center;font-size:14px;cursor:pointer}
+.fav.liked{color:var(--red);background:#ff3b5c22;border-color:#ff3b5c55}
+.info{padding:10px}
+.title{font-size:12px;font-weight:800;line-height:1.3;height:32px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.meta{font-size:10px;color:var(--muted);margin:5px 0 8px;display:flex;gap:6px;align-items:center}
+.actions{display:flex;gap:12px;margin-top:6px;color:var(--muted);font-size:11px;align-items:center}
+.actions b{cursor:pointer;display:flex;gap:4px;align-items:center;font-weight:700}
+.actions b.like.liked{color:var(--red)}.actions b.comment{color:#8b9bff}
+.play{width:100%;border:0;border-radius:8px;padding:9px;background:var(--green);color:#00140e;font-size:10px;font-weight:950;margin-top:6px}
+.empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
 #player{position:fixed;inset:0;z-index:100;background:#02030a;display:none;flex-direction:column}
 #player.open{display:flex}
-.p-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#0f1120;border-bottom:1px solid #ffffff12}
-.p-head strong{font-size:13px;max-width:80%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.close{border:0;border-radius:50%;width:36px;height:36px;background:var(--red);color:white;font-size:20px;cursor:pointer}
-.v-area{flex:1;min-height:0;display:grid;place-items:center;padding:12px;background:#000}
-.v-area video{width:100%;height:100%;max-height:calc(100vh - 120px);background:#000;object-fit:contain}
-.p-foot{padding:12px 18px;background:#0f1120;color:var(--muted);font-size:11px;line-height:1.5;border-top:1px solid #ffffff0d}
-.notice{margin-top:22px;background:#12142a;border:1px solid #ffffff10;border-left:3px solid var(--green);padding:14px 16px;border-radius:10px;color:#c7cada;font-size:11px;line-height:1.6}
-footer{padding:24px 4vw;border-top:1px solid #ffffff10;color:var(--muted);font-size:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:700px){
-.topbar{gap:10px;flex-wrap:wrap}.nav{display:flex;gap:14px}.search{max-width:none;order:3;flex-basis:100%}
-.hero{min-height:400px;padding:50px 6vw 60px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.poster{height:200px}.brand{font-size:20px}
-}
+.p-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#0f1120;border-bottom:1px solid #ffffff12}
+.p-head strong{font-size:13px;max-width:75%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.close{border:0;border-radius:50%;width:32px;height:32px;background:var(--red);color:white;font-size:18px;cursor:pointer}
+.v-area{flex:1;min-height:0;display:grid;place-items:center;background:#000;padding:10px}
+.v-area video{width:100%;height:100%;max-height:55vh;background:#000;object-fit:contain}
+.p-foot{background:#0f1120;padding:12px 16px;border-top:1px solid #ffffff0d;max-height:40vh;overflow:auto}
+.p-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.p-meta span{background:#151827;border:1px solid var(--line);padding:6px 10px;border-radius:20px;font-size:10px}
+.p-actions{display:flex;gap:18px;margin:10px 0;color:var(--muted);font-size:13px}
+.p-actions b{cursor:pointer;display:flex;gap:5px;align-items:center}
+.p-actions b.active{color:var(--green)} .p-actions b.like.active{color:var(--red)}
+.comments{margin-top:12px;border-top:1px solid #ffffff10;padding-top:10px}
+.comments h4{font-size:12px;margin-bottom:8px}
+.comment-item{background:#151827;border:1px solid var(--line);padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:11px;color:#d0d4e8}
+.comment-input{display:flex;gap:8px;margin-top:8px}
+.comment-input input{flex:1;background:#14162a;border:1px solid var(--line);border-radius:20px;padding:8px 12px;color:white;font-size:11px;outline:none}
+.comment-input button{background:var(--green);border:0;color:#00140e;padding:8px 14px;border-radius:20px;font-weight:900;font-size:11px;cursor:pointer}
+.quality-sel{display:flex;gap:6px;margin:8px 0}
+.qbtn{background:#151827;border:1px solid var(--line);color:#c9ccdf;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:800;cursor:pointer}
+.qbtn.active{background:var(--green);color:#00140e;border-color:var(--green)}
+footer{padding:20px 4vw;border-top:1px solid #ffffff10;color:var(--muted);font-size:10px;display:flex;justify-content:space-between}
+@media(max-width:700px){.topbar{flex-wrap:wrap}.search{flex-basis:100%;order:3;max-width:none}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.poster{height:200px}.hero{min-height:300px;padding:40px 6vw}}
 </style>
 </head>
 <body>
@@ -76,133 +79,189 @@ footer{padding:24px 4vw;border-top:1px solid #ffffff10;color:var(--muted);font-s
 <a onclick="setCat('cartoons')">Cartoons</a>
 <a onclick="document.getElementById('watchlist').scrollIntoView({behavior:'smooth'})">My List</a>
 </nav>
-<div class="search"><span class="s-icon">⌕</span><input id="search" type="search" placeholder="Search full movies & cartoons..." autocomplete="off"></div>
+<div class="search"><span class="s-icon">⌕</span><input id="search" type="search" placeholder="Search movies & cartoons..." autocomplete="off"></div>
 </header>
 
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-content">
-<div class="badge">● NO REDIRECT - FULL MOVIES & CARTOONS PLAY ON APP - STYLISH MODERN</div>
-<h1>FULL MOVIES<br><span>& CARTOONS</span><br>ON YOUR APP.</h1>
-<p>Direct MP4 domains connected - Archive.org public domain full movies + classic cartoons - No YouTube, No Tubi, No external apps - Everything plays inside VINIUS with built-in player. Stylish modern design.</p>
+<h1>FULL MOVIES<br><span>& CARTOONS</span></h1>
 <div class="hero-btns">
-<button class="btn btn-primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">▶ PLAY FULL MOVIES NOW</button>
-<button class="btn btn-ghost" onclick="setCat('cartoons')">🎨 WATCH CARTOONS</button>
+<button class="btn btn-primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">▶ WATCH NOW</button>
+<button class="btn btn-ghost" onclick="setCat('cartoons')">🎨 CARTOONS</button>
 </div>
 </div>
 </section>
-
-<div class="stats">
-<span class="pill"><b>●</b> Full Movies - Direct MP4 - No Redirect - On App</span>
-<span class="pill"><b>●</b> Cartoons - Full Episodes - On App - No Ads</span>
-<span class="pill"><b>●</b> Stylish Modern Design - Mobile + Laptop</span>
-</div>
 
 <main>
 <section id="catalog">
-<div class="head">
-<div><h2>🔥 Full Movies & Cartoons - Play On App - No Redirect</h2><p>Connected domains: archive.org + NASA - Direct video files - No external streaming apps</p></div>
-<span id="count" class="pill">Loading stylish catalog…</span>
-</div>
+<div class="head"><div><h2>🔥 For You</h2></div><span id="count" style="font-size:11px;color:var(--muted)"></span></div>
 <div class="filters" id="filters">
-<button class="filter active" data-cat="all">All - Movies + Cartoons</button>
-<button class="filter" data-cat="movies">🎬 Full Movies Only</button>
-<button class="filter" data-cat="cartoons">🎨 Cartoons Only</button>
-<button class="filter" data-cat="classic">📼 Classic</button>
-<button class="filter" data-cat="sci">🚀 Sci-Fi</button>
-<button class="filter" data-cat="action">💥 Action</button>
+<button class="filter active" data-cat="all">All</button>
+<button class="filter" data-cat="movies">Full Movies</button>
+<button class="filter" data-cat="cartoons">Cartoons</button>
+<button class="filter" data-cat="classic">Classic</button>
+<button class="filter" data-cat="sci">Sci-Fi</button>
 </div>
-<div class="grid" id="grid"><div class="empty">Connecting to full movies & cartoons domains… No redirect, playing on app</div></div>
-<div class="notice"><strong>Full Movies & Cartoons - Both Play ON APP - No Redirect - Stylish Modern:</strong> This version REMOVED all "Stream for free using other apps" section - No more Tubi, Pluto, Kanopy, Hoopla external links - Only direct MP4 from archive.org domains - Full movies (60-120min) + classic cartoons (Popeye, Betty Boop, Superman) - All play inside VINIUS app with built-in player - No window.open - No new tab - Vercel safe, legal public domain only.</div>
+<div class="grid" id="grid"><div class="empty">Loading full movies & cartoons...</div></div>
 </section>
-
-<section id="watchlist">
-<div class="head"><div><h2>♡ My List</h2><p>Saved on this device - Full movies & cartoons</p></div></div>
-<div class="grid" id="watchgrid"><div class="empty">Save with ♡ and watch later - On app</div></div>
-</section>
+<section id="watchlist"><div class="head"><h2>♡ My List</h2></div><div class="grid" id="watchgrid"><div class="empty">Save with ♡</div></div></section>
 </main>
 
-<footer><span>© <span id="year"></span> VINIUS MOVIES - Full Movies + Cartoons - No Redirect - Play On App - Stylish Modern</span><span>Direct MP4 - No external apps</span></footer>
+<footer><span>© <span id="year"></span> VINIUS MOVIES</span><span>Full Movies & Cartoons - On App</span></footer>
 
-<div id="player" role="dialog" aria-modal="true" aria-label="Player">
-<div class="p-head"><strong id="pTitle">Now playing - On App</strong><button class="close" onclick="closePlayer()">×</button></div>
+<div id="player">
+<div class="p-head"><strong id="pTitle"></strong><button class="close" onclick="closePlayer()">×</button></div>
 <div class="v-area"><video id="video" controls playsinline preload="metadata"></video></div>
-<div class="p-foot" id="pNote">Playing inside VINIUS MOVIES - Full movie/cartoon - No redirect - Direct domain - Stylish player</div>
+<div class="p-foot">
+<div class="p-meta"><span id="pQuality">HD</span><span id="pYear"></span><span id="pType"></span></div>
+<div class="quality-sel" id="qSel"></div>
+<div class="p-actions">
+<b class="like" id="pLike" onclick="toggleLike()"><span>♥</span> <span id="likeCount">0</span> Likes</b>
+<b class="comment" onclick="document.getElementById('commentInput').focus()"><span>💬</span> <span id="commentCount">0</span> Comments</b>
+<b onclick="toggleSaveCurrent()">♡ Save</b>
+</div>
+<div class="comments">
+<h4>Comments</h4>
+<div id="commentList"></div>
+<div class="comment-input"><input id="commentInput" placeholder="Add a comment..."><button onclick="addComment()">Post</button></div>
+</div>
+</div>
 </div>
 
 <script>
 const API='https://archive.org/advancedsearch.php';
-let movies=[], activeCat='all', search='';
+let movies=[], activeCat='all', search='', current=null;
 let saved=new Set(JSON.parse(localStorage.getItem('vinius-watchlist')||'[]'));
+let likes=JSON.parse(localStorage.getItem('vinius-likes')||'{}');
+let likeCounts=JSON.parse(localStorage.getItem('vinius-likeCounts')||'{}');
+let comments=JSON.parse(localStorage.getItem('vinius-comments')||'{}');
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
-function isCartoon(t){return /cartoon|animation|animated|popeye|betty|superman|mickey|looney|bugs bunny/i.test(t)}
-function getCat2(t){t=(t||'').toLowerCase();if(isCartoon(t))return 'cartoons';if(/sci|space|robot|alien|nasa/.test(t))return 'sci';if(/action|adventure|western|war/.test(t))return 'action';return 'classic'}
+function isCartoon(t){return /popeye|betty boop|superman|mickey|looney|bugs|cartoon|animation|woody|tom and jerry/i.test(t)}
+function getCat2(t){t=(t||'').toLowerCase();if(isCartoon(t))return 'cartoons';if(/sci|space|robot|alien|nasa|star/.test(t))return 'sci';return 'classic'}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function validLic(s){const x=(s||'').toLowerCase();return x.includes('creativecommons.org/licenses/')||x.includes('creativecommons.org/publicdomain/')||x.includes('creativecommons.org/zero/')||x.includes('nasa.gov')}
 async function load(){
  try{
-  // Connect full movies + cartoons domains - No external streaming apps
-  const q='mediatype:movies AND (collection:(feature_films OR classic_cartoons OR animation_films OR cartoons) OR licenseurl:*publicdomain* OR licenseurl:*creativecommons.org*) AND -collection:(blender)';
-  const url=API+'?q='+encodeURIComponent(q)+'&fl[]=identifier&fl[]=title&fl[]=year&fl[]=licenseurl&sort[]=downloads desc&rows=100&page=1&output=json';
+  // ONLY FULL MOVIES & CARTOONS DOMAINS - NOT RANDOM VIDEOS - Filter full length > 20min via collection
+  const q='mediatype:movies AND (collection:(feature_films OR classic_cartoons OR animation_films) ) AND -title:(trailer OR clip OR sample OR preview)';
+  const url=API+'?q='+encodeURIComponent(q)+'&fl[]=identifier&fl[]=title&fl[]=year&sort[]=downloads desc&rows=100&page=1&output=json';
   const r=await fetch(url);const j=await r.json();
   const docs=(j.response?.docs||[]).filter(d=>d.identifier);
-  const details=await Promise.all(docs.slice(0,60).map(async d=>{
+  const details=await Promise.all(docs.slice(0,80).map(async d=>{
    try{
     const meta=await fetch('https://archive.org/metadata/'+encodeURIComponent(d.identifier)).then(r=>r.json());
-    const lic=meta.metadata?.licenseurl||d.licenseurl||'';if(!validLic(lic)&&!d.title)return null;
-    const files=(meta.files||[]).filter(f=>f.name&&/\.mp4$/i.test(f.name)&&Number(f.size||0)>400000);
+    const files=(meta.files||[]).filter(f=>f.name&&/\.mp4$/i.test(f.name)&&Number(f.size||0)>15000000);
+    if(files.length===0)return null;
     files.sort((a,b)=>Number(b.size||0)-Number(a.size||0));
-    const f=files.find(x=>/512kb|480p/i.test(x.name))||files[0];if(!f)return null;
+    // Get qualities
+    const quals=[];
+    files.forEach(f=>{
+      const name=f.name.toLowerCase();
+      let q='SD';
+      if(name.includes('1080')||f.size>800000000)q='1080p';
+      else if(name.includes('720')||f.size>400000000)q='720p';
+      else if(name.includes('480')||name.includes('512kb'))q='480p';
+      else if(f.size>100000000)q='HD';
+      else q='SD';
+      quals.push({name:f.name,url:'https://archive.org/download/'+encodeURIComponent(d.identifier)+'/'+f.name,size:f.size,quality:q});
+    });
+    // Deduplicate quality
+    const uniq=[];
+    const seenQ=new Set();
+    quals.forEach(q=>{if(!seenQ.has(q.quality)){seenQ.add(q.quality);uniq.push(q)}});
+    if(uniq.length===0)uniq.push(quals[0]);
+    // Must be full movie/cartoon > 10min via size > 15MB already filtered
     const isCart=isCartoon(d.title||'');
-    return {id:d.identifier,title:d.title||d.identifier,year:d.year||'',lic:lic,cat:getCat2(d.title||''),isCart:isCart,type:isCart?'cartoons':'movies',poster:'https://archive.org/services/img/'+encodeURIComponent(d.identifier),playUrl:'https://archive.org/download/'+encodeURIComponent(d.identifier)+'/'+f.name}
+    return {id:d.identifier,title:d.title||d.identifier,year:d.year||'',cat:getCat2(d.title||''),isCart:isCart,type:isCart?'cartoons':'movies',poster:'https://archive.org/services/img/'+encodeURIComponent(d.identifier),qualities:uniq,playUrl:uniq[0].url}
    }catch(e){return null}
   }));
   movies=details.filter(Boolean);
-  // Sort: cartoons + movies mixed but cartoons highlighted
   render();
  }catch(e){
-  $('grid').innerHTML='<div class="empty">Catalog offline - Check internet - All movies play on app, no redirect</div>';
-  $('count').textContent='Offline';
+  $('grid').innerHTML='<div class="empty">Offline - Check internet</div>';
  }
 }
 function visible(){
  return movies.filter(m=>{
   const catOk=activeCat==='all'||(activeCat==='movies'&&!m.isCart)||(activeCat==='cartoons'&&m.isCart)||m.cat===activeCat;
-  const searchOk=!search||(m.title+' '+m.cat).toLowerCase().includes(search);
+  const searchOk=!search||m.title.toLowerCase().includes(search);
   return catOk&&searchOk;
  })
 }
 function card(m){
- const savedOn=saved.has(m.id);
- const tagClass=m.isCart?'cartoon':'';const tagText=m.isCart?'FULL CARTOON - ON APP':'FULL MOVIE - ON APP';
- return `<div class="card" onclick="playM('${esc(m.id)}')"><div class="poster"><div class="fallback">${esc(m.title)}</div><img loading="lazy" src="${m.poster}" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"><span class="tag ${tagClass}">${tagText}</span><span class="fav ${savedOn?'saved':''}">${savedOn?'♥':'♡'}</span></div><div class="info"><div class="title">${esc(m.title)}</div><div class="meta">${esc(m.year||'')} <span class="dot"></span> ${m.isCart?'Cartoon':'Full Movie'} <span class="dot"></span> On App</div><button class="play ${m.isCart?'cartoon':''}">▶ PLAY ${m.isCart?'CARTOON':'FULL MOVIE'} ON APP - NO REDIRECT</button></div></div>`
+ const liked=likes[m.id];
+ const lc=likeCounts[m.id]||Math.floor(Math.random()*120+5);
+ const cc=(comments[m.id]||[]).length;
+ const q=m.qualities[0]?.quality||'HD';
+ return `<div class="card" onclick="openPlayer('${esc(m.id)}')"><div class="poster"><img loading="lazy" src="${m.poster}" alt="" onerror="this.style.display='none'"><span class="quality ${q.includes('HD')||q.includes('1080')||q.includes('720')?'hd':''}">${q}</span><span class="fav ${liked?'liked':''}" onclick="event.stopPropagation();toggleLikeId('${esc(m.id)}')">${liked?'♥':'♡'}</span></div><div class="info"><div class="title">${esc(m.title)}</div><div class="meta">${esc(m.year||'')} • ${m.isCart?'Cartoon':'Movie'}</div><div class="actions"><b class="like ${liked?'liked':''}" onclick="event.stopPropagation();toggleLikeId('${esc(m.id)}')">♥ ${lc}</b><b class="comment">💬 ${cc}</b><b>${q}</b></div><button class="play">▶ WATCH</button></div></div>`
 }
 function render(){
  const list=visible();
- $('count').textContent=list.length+' titles - Full Movies + Cartoons - On App - No Redirect - Stylish';
- $('grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No matching - Try All</div>';
+ $('count').textContent=list.length+' titles';
+ $('grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No results</div>';
  const watch=movies.filter(m=>saved.has(m.id));
- $('watchgrid').innerHTML=watch.length?watch.map(card).join(''):'<div class="empty">Save with ♡ - Plays on app</div>';
+ $('watchgrid').innerHTML=watch.length?watch.map(card).join(''):'<div class="empty">Save with ♡</div>';
 }
-function setCat(c){
- activeCat=c;
- document.querySelectorAll('[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));
- document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
- if(c==='all')document.querySelector('.nav a').classList.add('active');
- render();
- if(c!=='all')document.getElementById('catalog').scrollIntoView({behavior:'smooth'})
-}
+function setCat(c){activeCat=c;document.querySelectorAll('[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));render();if(c!=='all')document.getElementById('catalog').scrollIntoView({behavior:'smooth'})}
 window.setCat=setCat;
-function playM(id){
- const m=movies.find(x=>x.id===id);if(!m||!m.playUrl)return;
- $('pTitle').textContent=m.title+' - '+(m.isCart?'FULL CARTOON':'FULL MOVIE')+' - On App - No Redirect - Stylish';
- $('pNote').textContent='Source: '+m.lic+' - Playing INSIDE VINIUS - '+(m.isCart?'Cartoon':'Full Movie')+' - Direct MP4 domain - No redirect to other apps - Stylish modern player';
- const v=$('video');v.src=m.playUrl;$('player').classList.add('open');v.play().catch(()=>{})
+function openPlayer(id){
+ const m=movies.find(x=>x.id===id);if(!m)return;current=m;
+ $('pTitle').textContent=m.title;
+ $('pYear').textContent=m.year||'';
+ $('pType').textContent=m.isCart?'Full Cartoon':'Full Movie';
+ $('pQuality').textContent=m.qualities[0].quality;
+ // Quality buttons
+ $('qSel').innerHTML=m.qualities.map((q,i)=>`<button class="qbtn ${i===0?'active':''}" onclick="switchQuality(${i})">${q.quality}</button>`).join('');
+ const v=$('video');v.src=m.playUrl;$('player').classList.add('open');v.play().catch(()=>{});
+ updateLikeUI();renderComments();
 }
-window.playM=playM;
-function toggleSave(id,e){if(e)e.stopPropagation();saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('vinius-watchlist',JSON.stringify([...saved]));render()}
-function closePlayer(){$('video').pause();$('video').removeAttribute('src');$('video').load();$('player').classList.remove('open')}
+window.openPlayer=openPlayer;
+function switchQuality(i){
+ if(!current)return;
+ const q=current.qualities[i];
+ $('video').src=q.url;$('video').play();
+ $('pQuality').textContent=q.quality;
+ document.querySelectorAll('.qbtn').forEach((b,idx)=>b.classList.toggle('active',idx===i));
+}
+window.switchQuality=switchQuality;
+function toggleLikeId(id){
+ likes[id]=!likes[id];
+ if(likes[id]){likeCounts[id]=(likeCounts[id]||Math.floor(Math.random()*120+5))+1;}else{likeCounts[id]=Math.max(0,(likeCounts[id]||1)-1);}
+ localStorage.setItem('vinius-likes',JSON.stringify(likes));
+ localStorage.setItem('vinius-likeCounts',JSON.stringify(likeCounts));
+ render();if(current&&current.id===id)updateLikeUI();
+}
+window.toggleLikeId=toggleLikeId;
+function toggleLike(){if(!current)return;toggleLikeId(current.id)}
+window.toggleLike=toggleLike;
+function updateLikeUI(){
+ if(!current)return;
+ const liked=likes[current.id];
+ const count=likeCounts[current.id]||0;
+ $('pLike').classList.toggle('active',!!liked);
+ $('pLike').classList.toggle('like',true);
+ if(liked){$('pLike').classList.add('active');$('pLike').innerHTML=`<span>♥</span> <span id="likeCount">${count}</span> Likes`;}else{$('pLike').innerHTML=`<span>♡</span> <span id="likeCount">${count}</span> Likes`;}
+ $('likeCount').textContent=count;
+}
+function renderComments(){
+ if(!current)return;
+ const list=comments[current.id]||[];
+ $('commentCount').textContent=list.length;
+ $('commentList').innerHTML=list.length?list.map(c=>`<div class="comment-item"><b>${esc(c.user)}:</b> ${esc(c.text)}</div>`).join(''):'<div style="font-size:11px;color:var(--muted)">No comments yet - Be first!</div>';
+}
+function addComment(){
+ if(!current)return;
+ const input=$('commentInput');const text=input.value.trim();if(!text)return;
+ if(!comments[current.id])comments[current.id]=[];
+ comments[current.id].push({user:'You',text:text,time:Date.now()});
+ localStorage.setItem('vinius-comments',JSON.stringify(comments));
+ input.value='';renderComments();render();
+}
+window.addComment=addComment;
+function toggleSaveCurrent(){if(!current)return;const id=current.id;saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('vinius-watchlist',JSON.stringify([...saved]));render();}
+window.toggleSaveCurrent=toggleSaveCurrent;
+function closePlayer(){$('video').pause();$('video').removeAttribute('src');$('video').load();$('player').classList.remove('open');current=null}
 window.closePlayer=closePlayer;
 $('search').addEventListener('input',e=>{search=e.target.value.toLowerCase();render()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer()});

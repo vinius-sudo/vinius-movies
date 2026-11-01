@@ -1,80 +1,417 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VINIUS MOVIES - FINAL UPGRADE</title><style>*{margin:0;box-sizing:border-box;font-family:system-ui,Arial}body{background:#08080f;color:#fff}header{position:sticky;top:0;z-index:30;background:#0a0a14ee;backdrop-filter:blur(10px);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;gap:10px}header .logo{font-weight:900;font-size:15px}.logo span{color:#00ff88}input{background:#0008;border:1px solid #ffffff30;color:#fff;padding:7px 12px;border-radius:20px;font-size:12px;width:160px}.tabs{display:flex;gap:8px;padding:10px 18px;overflow-x:auto;background:#0e0e1e;border-bottom:1px solid #222}.tab{padding:8px 14px;border-radius:20px;background:#1a1a2e;border:1px solid #333;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer}.tab.on{background:#00ff88;color:#000;border-color:#00ff88}.stats{padding:8px 18px;font-size:10px;color:#7effa0;background:#0e0e1e;display:flex;gap:12px;flex-wrap:wrap;border-bottom:1px solid #222}.label{padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900}.label.inside{background:#00ff88;color:#000}.label.external{background:#ffcc00;color:#000}.label.lib{background:#0a84ff;color:#fff}.section{padding:14px 18px 0;font-size:13px;font-weight:900;display:flex;justify-content:space-between;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px;padding:12px 18px}.card{background:#151528;border-radius:12px;overflow:hidden;border:1px solid #2a2a4a;cursor:pointer;position:relative;transition:.15s}.card:hover{transform:translateY(-3px);border-color:#00ff8850}.card img{width:100%;height:185px;object-fit:cover;background:#000}.info{padding:7px}.tt{font-size:11px;font-weight:800;height:32px;overflow:hidden}.meta{font-size:8px;color:#aaa;margin:4px 0;display:flex;gap:4px;flex-wrap:wrap}.q{background:#1a2e1e;color:#7effa0;border:1px solid #00ff8840;padding:2px 5px;border-radius:4px;font-size:8px}.g{background:#1a1a3a;color:#aaa;padding:2px 5px;border-radius:4px;font-size:8px}.btn2{width:100%;color:#fff;border:0;padding:7px;border-radius:16px;font-weight:900;font-size:9px;margin-top:4px;cursor:pointer}.btn2.inside{background:linear-gradient(90deg,#00ff88,#00cc6a);color:#000}.btn2.external{background:linear-gradient(90deg,#ffcc00,#ff9900);color:#000}.btn2.lib{background:linear-gradient(90deg,#0a84ff,#6a5cff);color:#fff}#loadmore{display:block;margin:14px auto;background:#1a1a2e;border:1px solid #444;color:#fff;padding:12px 26px;border-radius:22px;font-weight:900;cursor:pointer}#player{position:fixed;inset:0;background:#000;z-index:9999;display:none;flex-direction:column}#player.show{display:flex}.phead{background:#141430;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.cl{background:#ff1a1a;border:0;color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer}video{width:100%;flex:1;background:#000;max-height:75vh}.controls{background:#10102a;padding:10px 14px;display:flex;gap:8px;align-items:center;font-size:11px;color:#aaa;flex-wrap:wrap}.notice{margin:8px 18px;padding:10px 12px;border-radius:8px;font-size:11px;display:block}.notice.green{background:#0e2a1e;border-left:3px solid #00ff88;color:#b3ffcc}.notice.yellow{background:#2a250e;border-left:3px solid #ffcc00;color:#ffeb99}.notice.blue{background:#0e1e2a;border-left:3px solid #0a84ff;color:#b3d9ff}</style></head><body>
-<header><div class="logo">VINIUS <span>MOVIES</span> - FINAL</div><input id="search" placeholder="Search..." oninput="filterSearch()"><div style="font-size:8px;background:#00ff88;color:#000;padding:5px 9px;border-radius:10px;font-weight:900;white-space:nowrap">UPGRADE ✅</div></header>
-<div class="tabs" id="tabs"></div>
-<div class="stats"><span id="statCount">Loading...</span><span class="label inside">INSIDE = Plays on app - NO ads - NO redirect</span><span class="label external">EXTERNAL = New tab - Official site - NO ads but login</span></div>
-<div class="notice green"><b>✅ Ad-free public-domain movies playing INSIDE your app:</b> Archive.org + NASA 2024 4K - Direct MP4 - NO ads, NO redirect, NO YouTube - Fixes your 0:00 + red boxes - Plays on VINIUS MOVIES player</div>
-<div class="notice blue"><b>📚 Kanopy & Hoopla sections (NEW! No ads):</b> Newer licensed films 2020-2024 WITHOUT ads! Free with library card (Thika Library e-card works). Must open in new tab because they need login - This is legal way to get newer movies with NO ads! Your screenshot recommendation #2</div>
-<div class="notice yellow"><b>🔗 Official links to other legal platforms:</b> Tubi, Pluto TV, Plex - Free licensed movies - Opens in new tab - Clear labels show INSIDE vs EXTERNAL - Your screenshot recommendation #3 & #4</div>
-<div class="section"><span id="secTitle">🔥 VINIUS MOVIES - Upgraded</span><span id="secCount" style="font-size:10px;color:#888"></span></div>
-<div class="grid" id="grid"></div>
-<button id="loadmore" onclick="loadMore()">Load More - Ad-free Inside App ⬇️</button>
-<div id="player"><div class="phead"><b id="ptitle"></b><button class="cl" onclick="closeP()">✕</button></div><video id="vid" controls playsinline autoplay poster=""></video><div class="controls"><span id="vstatus">Playing INSIDE VINIUS MOVIES - No redirect - No ads</span><span id="vlicense" style="margin-left:auto;background:#00ff88;color:#000;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900"></span></div></div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080910">
+<title>VINIUS MOVIES | Stream Your Way</title>
+<style>
+:root{--bg:#080910;--panel:#111321;--line:#292d43;--text:#f6f7fb;--muted:#a4a8bc;--green:#00f5a0;--purple:#8b5cf6;--red:#ff4664}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:22px;padding:15px 4vw;background:#080910ef;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
+.brand{font-size:21px;font-weight:950;letter-spacing:-1px;white-space:nowrap}
+.brand span{color:var(--green)}
+.nav{display:flex;gap:20px;margin-left:10px}
+.nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700}
+.nav a:hover{color:white}
+.search-wrap{margin-left:auto;position:relative;max-width:300px;width:100%}
+.search-wrap input{width:100%;background:#171a2c;border:1px solid var(--line);border-radius:24px;padding:10px 15px 10px 38px;color:white;outline:none}
+.search-wrap input:focus{border-color:var(--green)}
+.search-icon{position:absolute;left:14px;top:9px;color:var(--muted)}
+.hero{min-height:390px;padding:65px 6vw;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 45%,#5125a566,transparent 42%),linear-gradient(100deg,#101322 10%,#101322dd 48%,#10132255),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),transparent 42%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:650px}
+.eyebrow{color:var(--green);font-size:11px;letter-spacing:3px;font-weight:900}
+.hero h1{font-size:clamp(38px,6vw,70px);line-height:.98;letter-spacing:-3px;margin:15px 0}
+.hero p{max-width:520px;color:#d0d2de;line-height:1.65;font-size:14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.btn{border:0;border-radius:24px;padding:12px 20px;font-weight:850;font-size:12px}
+.primary{background:var(--green);color:#03130d}
+.secondary{background:#ffffff18;color:white;border:1px solid #ffffff30}
+.secondary:hover{background:#ffffff2a}
+.statusbar{display:flex;gap:9px;flex-wrap:wrap;padding:15px 4vw;border-bottom:1px solid #ffffff0d}
+.pill{font-size:10px;color:#c8cbda;background:#151827;border:1px solid var(--line);padding:7px 11px;border-radius:20px}
+.pill b{color:var(--green)}
+main{padding:10px 4vw 55px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:27px 0 14px}
+.section-head h2{font-size:19px;margin:0;letter-spacing:-.5px}
+.section-head p{margin:5px 0 0;color:var(--muted);font-size:11px}
+.filters{display:flex;gap:8px;overflow:auto;padding:4px 0 13px}
+.filter{white-space:nowrap;background:#151827;border:1px solid var(--line);color:#c9cada;padding:8px 13px;border-radius:20px;font-size:11px;font-weight:800}
+.filter.active{background:var(--green);color:#04130d;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:16px}
+.movie{background:var(--panel);border:1px solid #ffffff12;border-radius:13px;overflow:hidden;transition:.2s;min-width:0}
+.movie:hover{transform:translateY(-4px);border-color:#00f5a055;box-shadow:0 12px 35px #0008}
+.poster{height:225px;position:relative;background:linear-gradient(135deg,#252943,#111321);overflow:hidden}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.poster .fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:15px;color:#d8d9e4;font-weight:900;font-size:15px;background:radial-gradient(circle at top right,#7446c7,#171a2c 65%)}
+.tag{position:absolute;top:9px;left:9px;background:var(--green);color:#04130d;border-radius:5px;padding:5px 7px;font-size:8px;font-weight:950}
+.movie-info{padding:11px}
+.movie-title{font-size:12px;font-weight:850;line-height:1.35;min-height:32px}
+.movie-meta{color:var(--muted);font-size:10px;margin:6px 0 10px}
+.card-actions{display:flex;gap:6px}
+.watch{flex:1;border:0;border-radius:7px;padding:9px 5px;background:var(--green);color:#04130d;font-size:9px;font-weight:950}
+.fav{width:34px;border:1px solid var(--line);border-radius:7px;background:#1a1e30;color:white;font-size:15px}
+.fav.saved{color:#ff6684;border-color:#ff668455}
+.empty{padding:35px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}
+.platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.platform{background:linear-gradient(135deg,#171a2c,#10121e);border:1px solid var(--line);padding:17px;border-radius:12px}
+.platform h3{margin:0 0 7px;font-size:15px}
+.platform p{font-size:11px;color:var(--muted);line-height:1.5;min-height:34px}
+.platform a{color:var(--green);font-size:11px;font-weight:900;text-decoration:none}
+.notice{margin-top:20px;background:#151827;border:1px solid #ffffff12;border-left:3px solid var(--purple);padding:13px 15px;border-radius:9px;color:#c7cada;font-size:11px;line-height:1.6}
+.notice strong{color:white}
+#player{position:fixed;inset:0;z-index:100;background:#03040a;display:none;flex-direction:column}
+#player.open{display:flex}
+.player-head{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:#111321}
+.player-head strong{font-size:13px}
+.close{border:0;border-radius:50%;width:36px;height:36px;background:var(--red);color:white;font-size:20px}
+.video-area{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
+.video-area video{width:100%;height:100%;max-height:calc(100vh - 115px);background:#000;object-fit:contain}
+.player-foot{padding:10px 18px;background:#111321;color:var(--muted);font-size:10px;line-height:1.5}
+footer{padding:25px 4vw;border-top:1px solid #ffffff12;color:var(--muted);font-size:10px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:700px){
+.topbar{gap:12px;flex-wrap:wrap}
+.nav{display:none}
+.search-wrap{max-width:none;order:3;flex-basis:100%}
+.hero{min-height:350px;padding-top:48px;padding-bottom:65px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.poster{height:210px}
+.section-head{align-items:start;flex-direction:column}
+.brand{font-size:19px}
+}
+@media(min-width:1100px){
+.grid{grid-template-columns:repeat(auto-fill,minmax(175px,1fr))}
+.poster{height:250px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">VINIUS <span>MOVIES</span></div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#catalog">Discover</a>
+    <a href="#watchlist">My List</a>
+    <a href="#free-platforms">Free platforms</a>
+  </nav>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input id="search" type="search" placeholder="Search movies..." autocomplete="off">
+  </div>
+</header>
+
+<section class="hero" id="home">
+ <div class="hero-content">
+  <div class="eyebrow">YOUR PERSONAL MOVIE HUB</div>
+  <h1>STREAM<br>YOUR WAY.</h1>
+  <p>Discover films, explore public-domain classics and watch supported titles right here. Find newer licensed movies through official streaming services.</p>
+  <div class="actions">
+    <button class="btn primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">▶ EXPLORE MOVIES</button>
+    <button class="btn secondary" onclick="document.getElementById('free-platforms').scrollIntoView({behavior:'smooth'})">FIND FREE STREAMING</button>
+  </div>
+ </div>
+</section>
+
+<div class="statusbar">
+  <span class="pill"><b>●</b> Legal-source discovery</span>
+  <span class="pill">▶ In-app player for compatible direct video files</span>
+  <span class="pill">♡ Personal watchlist</span>
+</div>
+
+<main>
+ <section id="catalog">
+  <div class="section-head">
+    <div>
+      <h2>Discover movies</h2>
+      <p>Public-domain and openly licensed titles from Internet Archive</p>
+    </div>
+    <span id="count" class="pill">Loading catalog…</span>
+  </div>
+
+  <div class="filters" id="filters">
+   <button class="filter active" data-filter="all">All titles</button>
+   <button class="filter" data-filter="Action">Action</button>
+   <button class="filter" data-filter="Animation">Animation</button>
+   <button class="filter" data-filter="Comedy">Comedy</button>
+   <button class="filter" data-filter="Drama">Drama</button>
+   <button class="filter" data-filter="Horror">Horror</button>
+   <button class="filter" data-filter="Sci-Fi">Sci-Fi</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="empty">Connecting to the legal movie catalog…</div>
+  </div>
+
+  <div class="notice">
+    <strong>About in-app playback:</strong>
+    only videos with a compatible direct file and a suitable public-domain/open licence are offered in the built-in player. Some Archive items have no playable MP4, may be region-restricted, or may have incomplete rights metadata. Check each item's licence before reuse.
+  </div>
+ </section>
+
+ <section id="watchlist">
+  <div class="section-head">
+    <div>
+      <h2>♡ My watchlist</h2>
+      <p>Your saved titles on this device</p>
+    </div>
+  </div>
+  <div class="grid" id="watchgrid">
+    <div class="empty">Save a movie with the ♡ button and it will appear here.</div>
+  </div>
+ </section>
+
+ <section id="free-platforms">
+  <div class="section-head">
+    <div>
+      <h2>More movies, officially</h2>
+      <p>Newer licensed films are streamed by the services that hold the rights.</p>
+    </div>
+  </div>
+
+  <div class="platforms">
+   <div class="platform">
+     <h3>Tubi</h3>
+     <p>Free, ad-supported movies and TV. Availability varies by country.</p>
+     <a href="https://tubitv.com/" target="_blank" rel="noopener">OPEN TUBI ↗</a>
+   </div>
+   <div class="platform">
+     <h3>Pluto TV</h3>
+     <p>Free live channels and on-demand entertainment, with ads.</p>
+     <a href="https://pluto.tv/" target="_blank" rel="noopener">OPEN PLUTO TV ↗</a>
+   </div>
+   <div class="platform">
+     <h3>Plex</h3>
+     <p>Free, ad-supported movies and shows in supported regions.</p>
+     <a href="https://watch.plex.tv/" target="_blank" rel="noopener">OPEN PLEX ↗</a>
+   </div>
+   <div class="platform">
+     <h3>Kanopy</h3>
+     <p>Ad-free streaming for eligible library and university members. Catalogue depends on your library.</p>
+     <a href="https://www.kanopy.com/" target="_blank" rel="noopener">OPEN KANOPY ↗</a>
+   </div>
+   <div class="platform">
+     <h3>Hoopla</h3>
+     <p>Digital movies through participating public libraries with a valid library account.</p>
+     <a href="https://www.hoopladigital.com/" target="_blank" rel="noopener">OPEN HOOPLA ↗</a>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> VINIUS MOVIES · Personal movie discovery hub</span>
+  <span>Use official sources and respect copyright.</span>
+</footer>
+
+<div id="player" role="dialog" aria-modal="true" aria-label="Movie player">
+ <div class="player-head">
+   <strong id="player-title">Now playing</strong>
+   <button class="close" onclick="closePlayer()" aria-label="Close player">×</button>
+ </div>
+ <div class="video-area">
+   <video id="video" controls playsinline preload="metadata"></video>
+ </div>
+ <div class="player-foot" id="player-note">
+   Playback is provided by the linked public-domain/openly licensed source.
+ </div>
+</div>
+
 <script>
-let ALL=[];let filtered=[];let page=1;let activeTab="inside";let seen=new Set();
-const tabs={inside:"✅ INSIDE App - No Ads - Public Domain",kanopy:"📚 Kanopy - Newer - No Ads - Library",hoopla:"🎬 Hoopla - Newer - No Ads - Library",official:"🔗 Official - Tubi/Pluto/Plex",all:"🔥 All Sources"};
-const CURATED=[
-{t:"NASA Artemis 2024 4K - FULL - NO ADS - INSIDE",y:"2024",cat:"NASA",img:"https://images-assets.nasa.gov/image/art001e000438/art001e000438~orig.jpg",type:"inside",license:"NASA Public Domain - NO ADS - INSIDE",id:"NASA-2024-Artemis",playType:"inside"},
-{t:"Night of the Living Dead - FULL 1968 - NO ADS - INSIDE",y:"1968",cat:"Classic",img:"https://archive.org/services/img/night_of_the_living_dead",type:"inside",license:"Public Domain - NO ADS - INSIDE",id:"night_of_the_living_dead",playType:"inside"},
-{t:"Popeye COLOR - FULL - NO ADS - INSIDE",y:"1960",cat:"Cartoon",img:"https://archive.org/services/img/popeye_the_sailor_meets_ali_baba",type:"inside",license:"Public Domain - NO ADS - INSIDE",id:"popeye_the_sailor_meets_ali_baba",playType:"inside"},
-// Kanopy - Newer licensed films without ads (needs library card) - MUST open new tab - This answers ChatGPT question YES
-{t:"Kanopy - Newer Movies 2020-2024 - NO ADS - Library Free",y:"2023",cat:"Action",img:"https://via.placeholder.com/300x450/0a84ff/fff?text=Kanopy+No+Ads+2024",type:"kanopy",license:"Kanopy - Newer - No Ads - Library Card Required - EXTERNAL",ext:"https://www.kanopy.com/category/available",playType:"external",desc:"Newer 2020-2024 - No ads - Free with library card - Thika library"},
-{t:"Kanopy Animation - Newer Cartoons - NO ADS",y:"2024",cat:"Animation",img:"https://via.placeholder.com/300x450/0a84ff/fff?text=Kanopy+Animation+No+Ads",type:"kanopy",license:"Kanopy - No Ads - EXTERNAL",ext:"https://www.kanopy.com/category/animation",playType:"external"},
-// Hoopla - Newer licensed films without ads
-{t:"Hoopla - Newer Movies - NO ADS - Library Free",y:"2024",cat:"Sci-Fi",img:"https://via.placeholder.com/300x450/6a5cff/fff?text=Hoopla+No+Ads+2024",type:"hoopla",license:"Hoopla - Newer - No Ads - Library Card Required - EXTERNAL",ext:"https://www.hoopladigital.com/browse",playType:"external",desc:"Newer 2020-2024 - No ads - Free with library - Your screenshot"},
-{t:"Hoopla Comics & Animation - NO ADS",y:"2023",cat:"Cartoon",img:"https://via.placeholder.com/300x450/6a5cff/fff?text=Hoopla+Cartoon+No+Ads",type:"hoopla",license:"Hoopla - No Ads - EXTERNAL",ext:"https://www.hoopladigital.com/",playType:"external"},
-// Official links - Tubi/Pluto/Plex - Free licensed
-{t:"Tubi - Free Action 2024 - Official - EXTERNAL",y:"2024",cat:"Classic",img:"https://via.placeholder.com/300x450/ff4d00/fff?text=Tubi+Free+2024",type:"official",license:"Tubi - Free Licensed - EXTERNAL - New Tab",ext:"https://tubitv.com/category/action",playType:"external"},
-{t:"Pluto TV - Free Movies - Official - EXTERNAL",y:"2024",cat:"Classic",img:"https://via.placeholder.com/300x450/ff0000/fff?text=Pluto+TV+Free",type:"official",license:"Pluto TV - Free Licensed - EXTERNAL",ext:"https://pluto.tv/on-demand",playType:"external"},
-{t:"Plex Free - Animation - Official - EXTERNAL",y:"2023",cat:"Animation",img:"https://via.placeholder.com/300x450/ffcc00/000?text=Plex+Free",type:"official",license:"Plex Free - Licensed - EXTERNAL",ext:"https://watch.plex.tv/",playType:"external"}
-];
-function renderTabs(){document.getElementById('tabs').innerHTML=Object.keys(tabs).map(k=>`<div class="tab ${activeTab===k?'on':''}" onclick="setTab('${k}')">${tabs[k]}</div>`).join('');}
-function setTab(t){activeTab=t;renderTabs();applyFilter();}window.setTab=setTab;
-function getCat(title){title=(title||"").toLowerCase();if(title.includes("nasa")||title.includes("space"))return"NASA";if(title.includes("popeye")||title.includes("cartoon"))return"Cartoon";if(title.includes("sci"))return"Sci-Fi";return"Classic";}
-async function fetchArchive(p){
-let q="(licenseurl:(*creativecommons* OR *publicdomain* OR *nasa.gov*) OR collection:(nasa OR classic_cartoons OR animation_films OR cartoons OR feature_films)) AND year:[1960 TO 2025] AND mediatype:movies AND -collection:(blender OR open_movies)";
-let url=`https://archive.org/advancedsearch.php?q=${encodeURIComponent(q)}&fl[]=identifier&fl[]=title&fl[]=year&fl[]=licenseurl&sort[]=year desc&rows=80&page=${p}&output=json`;
-try{let r=await fetch(url);let j=await r.json();let out=[];for(let d of j.response.docs){if(seen.has(d.identifier))continue;seen.add(d.identifier);let lic=(d.licenseurl||"").toLowerCase();let coll=(d.collection||[]).join(" ").toLowerCase();if(!lic.includes("cc")&&!lic.includes("publicdomain")&&!lic.includes("nasa")&&!coll.includes("nasa")&&!coll.includes("feature"))continue;out.push({id:d.identifier,t:(d.title||d.identifier)+" - FULL - NO ADS - INSIDE",y:d.year||"19??",cat:getCat(d.title),img:`https://archive.org/services/img/${d.identifier}`,type:"inside",license:coll.includes("nasa")?"NASA Public Domain - NO ADS - INSIDE":"Public Domain - NO ADS - INSIDE",playType:"inside"});}return out;}catch(e){return [];}
+const API='https://archive.org/advancedsearch.php';
+let movies=[], activeFilter='all', searchTerm='';
+let saved=new Set(JSON.parse(localStorage.getItem('vinius-watchlist')||'[]'));
+const $=id=>document.getElementById(id);
+
+$('year').textContent=new Date().getFullYear();
+
+function category(title){
+ const s=(title||'').toLowerCase();
+ if(/cartoon|animation|animated|popeye|mickey/.test(s))return 'Animation';
+ if(/horror|vampire|zombie|haunt|monster|frankenstein|dracula/.test(s))return 'Horror';
+ if(/science fiction|sci.fi|space|robot|alien/.test(s))return 'Sci-Fi';
+ if(/comedy|funny|charlie chaplin|laurel|hardy/.test(s))return 'Comedy';
+ if(/western|war|adventure|action/.test(s))return 'Action';
+ return 'Drama';
 }
-function applyFilter(){
-let search=document.getElementById('search').value.toLowerCase();
-filtered=ALL.filter(m=>{
-let okTab=activeTab==="all"||m.type===activeTab;
-let okSearch=!search||m.t.toLowerCase().includes(search);
-return okTab&&okSearch;
+
+function escapeHtml(s){
+ return String(s??'').replace(/[&<>"']/g,c=>({
+ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+ }[c]));
+}
+
+function validOpenLicense(s){
+ const x=(s||'').toLowerCase();
+ return x.includes('creativecommons.org/licenses/')||
+        x.includes('creativecommons.org/publicdomain/')||
+        x.includes('creativecommons.org/zero/');
+}
+
+async function loadCatalog(){
+ try{
+  const q='mediatype:movies AND (licenseurl:*creativecommons.org* OR licenseurl:*publicdomain*)';
+  const url=API+'?q='+encodeURIComponent(q)+
+    '&fl[]=identifier&fl[]=title&fl[]=year&fl[]=licenseurl'+
+    '&sort[]=downloads%20desc&rows=48&page=1&output=json';
+
+  const res=await fetch(url);
+  if(!res.ok)throw new Error('Catalog unavailable');
+
+  const data=await res.json();
+  const docs=(data.response?.docs||[]).filter(
+    d=>d.identifier&&validOpenLicense(d.licenseurl)
+  );
+
+  const details=await Promise.all(docs.slice(0,36).map(async d=>{
+   try{
+    const r=await fetch('https://archive.org/metadata/'+encodeURIComponent(d.identifier));
+    const m=await r.json();
+    const lic=m.metadata?.licenseurl||d.licenseurl||'';
+
+    if(!validOpenLicense(lic))return null;
+
+    const files=(m.files||[]).filter(f=>
+      f.name&&/\.mp4$/i.test(f.name)&&Number(f.size||0)>300000
+    );
+    files.sort((a,b)=>Number(b.size||0)-Number(a.size||0));
+
+    const file=files[0];
+
+    return {
+      id:d.identifier,
+      title:d.title||d.identifier,
+      year:d.year||'',
+      license:lic,
+      category:category(d.title),
+      poster:'https://archive.org/services/img/'+encodeURIComponent(d.identifier),
+      playUrl:file?'https://archive.org/download/'+encodeURIComponent(d.identifier)+'/'+file.name:null,
+      detailUrl:'https://archive.org/details/'+encodeURIComponent(d.identifier)
+    };
+   }catch(e){
+    return null;
+   }
+  }));
+
+  movies=details.filter(Boolean);
+  render();
+
+ }catch(e){
+  $('grid').innerHTML='<div class="empty">The movie catalogue could not load. Check your internet connection and refresh this page. You can still use the official streaming links below.</div>';
+  $('count').textContent='Catalog offline';
+ }
+}
+
+function visibleMovies(){
+ return movies.filter(m=>
+   (activeFilter==='all'||m.category===activeFilter)&&
+   (!searchTerm||(m.title+' '+m.category+' '+m.year).toLowerCase().includes(searchTerm))
+ );
+}
+
+function card(m){
+ const isSaved=saved.has(m.id);
+
+ const play=m.playUrl
+ ? `<button class="watch" onclick="event.stopPropagation();playMovie('${encodeURIComponent(m.id)}')">▶ WATCH INSIDE</button>`
+ : `<button class="watch" onclick="event.stopPropagation();window.open('${m.detailUrl}','_blank','noopener')">VIEW SOURCE ↗</button>`;
+
+ return `<article class="movie">
+   <div class="poster">
+    <div class="fallback">${escapeHtml(m.title)}</div>
+    <img loading="lazy" src="${m.poster}" alt="${escapeHtml(m.title)} poster"
+      onload="this.previousElementSibling.style.display='none'"
+      onerror="this.style.display='none'">
+    <span class="tag">${m.playUrl?'IN-APP MP4':'SOURCE PAGE'}</span>
+   </div>
+   <div class="movie-info">
+    <div class="movie-title">${escapeHtml(m.title)}</div>
+    <div class="movie-meta">${escapeHtml(m.year||'Year unavailable')} · ${escapeHtml(m.category)}</div>
+    <div class="card-actions">
+     ${play}
+     <button class="fav ${isSaved?'saved':''}" title="Save to watchlist"
+       aria-label="Save ${escapeHtml(m.title)}"
+       onclick="event.stopPropagation();toggleSaved('${encodeURIComponent(m.id)}')">${isSaved?'♥':'♡'}</button>
+    </div>
+   </div>
+ </article>`;
+}
+
+function render(){
+ const list=visibleMovies();
+ $('count').textContent=list.length+' titles';
+
+ $('grid').innerHTML=list.length
+ ?list.map(card).join('')
+ :'<div class="empty">No matching movies found. Try another search or genre.</div>';
+
+ const watch=movies.filter(m=>saved.has(m.id));
+
+ $('watchgrid').innerHTML=watch.length
+ ?watch.map(card).join('')
+ :'<div class="empty">Save a movie with the ♡ button and it will appear here.</div>';
+}
+
+function toggleSaved(encoded){
+ const id=decodeURIComponent(encoded);
+
+ saved.has(id)?saved.delete(id):saved.add(id);
+
+ localStorage.setItem('vinius-watchlist',JSON.stringify([...saved]));
+ render();
+}
+
+function playMovie(encoded){
+ const m=movies.find(x=>x.id===decodeURIComponent(encoded));
+ if(!m||!m.playUrl)return;
+
+ $('player-title').textContent=m.title;
+
+ $('player-note').textContent=
+ 'Source: Internet Archive · Licence listed as '+m.license+
+ '. If playback is unavailable, open the source page to check available formats and rights.';
+
+ $('video').src=m.playUrl;
+ $('player').classList.add('open');
+ $('video').play().catch(()=>{});
+}
+
+function closePlayer(){
+ $('video').pause();
+ $('video').removeAttribute('src');
+ $('video').load();
+ $('player').classList.remove('open');
+}
+
+$('search').addEventListener('input',e=>{
+ searchTerm=e.target.value.trim().toLowerCase();
+ render();
 });
-document.getElementById('secTitle').textContent=tabs[activeTab]+` - ${filtered.length} movies`;
-document.getElementById('secCount').textContent=activeTab==="inside"?"All play INSIDE app - No ads - No redirect":activeTab==="kanopy"||activeTab==="hoopla"?"Newer 2020-2024 - No ads - Requires library card - Opens new tab (must for legal)":activeTab==="official"?"Official free sites - Opens new tab - Free licensed":"";
-renderGrid();
-}
-function filterSearch(){applyFilter();}window.filterSearch=filterSearch;
-async function loadMore(){let btn=document.getElementById('loadmore');btn.textContent="Loading more ad-free inside app...";let more=await fetchArchive(page+1);if(more.length){page++;ALL=[...ALL,...more];applyFilter();btn.textContent=`Load More - ${ALL.length} Total - Inside No Ads ⬇️`; }else btn.textContent="All loaded";}window.loadMore=loadMore;
-function renderGrid(){
-document.getElementById('grid').innerHTML=filtered.map(m=>{
-let idx=ALL.indexOf(m);
-let isInside=m.playType==="inside";
-let badgeClass=isInside?"inside":m.type==="kanopy"||m.type==="hoopla"?"lib":"external";
-let badgeText=isInside?"INSIDE NO ADS":m.type==="kanopy"?"KANOPY NO ADS - NEW TAB":m.type==="hoopla"?"HOOPLA NO ADS - NEW TAB":"OFFICIAL NEW TAB";
-let btnClass=isInside?"inside":m.type==="kanopy"||m.type==="hoopla"?"lib":"external";
-let btnText=isInside?"▶ PLAY FULL MOVIE INSIDE APP - NO ADS - NO REDIRECT":"▶ OPEN OFFICIAL SITE IN NEW TAB - "+(m.type==="kanopy"||m.type==="hoopla"?"NO ADS - Library":"Free Licensed");
-return `<div class="card" onclick="playM(${idx})"><div class="label ${badgeClass}" style="position:absolute;top:6px;left:6px;z-index:2">${badgeText}</div><img loading="lazy" src="${m.img}" onerror="this.src='https://via.placeholder.com/300x450/1a1a2e/fff?text=${m.type}'"><div class="info"><div class="tt">${m.t}</div><div class="meta"><span class="q">${m.license}</span><span class="g">${m.cat} ${m.y}</span></div><button class="btn2 ${btnClass}">${btnText}</button></div></div>`;
-}).join('');
-}
-function playM(i){
-let m=ALL[i];
-if(m.playType==="external"){
-// ChatGPT question: Should official streaming open in new tab? YES for Kanopy/Hoopla/Tubi - They need login + DRM - Cannot play inside app directly - Legal requirement
-let msg=`Opening ${m.type.toUpperCase()} official site in new tab...\n\n${m.type==="kanopy"||m.type==="hoopla"?"This is newer movies 2020-2024 WITHOUT ads! Free with library card.\n\nThika Library: Get free e-card at kanopy.com/signup or hoopla with your library card number.\n\nThis MUST open in new tab because Kanopy/Hoopla need library login - Cannot play inside VINIUS app directly - This is legal requirement (DRM).":"Free licensed movies on official site - Opens new tab - Legal and Vercel safe."}\n\nClear label: EXTERNAL = New tab, INSIDE = Plays on app - As per your screenshot recommendation #4`;
-if(confirm(msg+"\n\nOpen "+m.type+" now?")){window.open(m.ext,"_blank");}
-return;
-}
-// INSIDE playback - No redirect - No ads - Public domain
-document.getElementById('ptitle').textContent=`${m.t} - ${m.license}`;document.getElementById('player').classList.add('show');document.getElementById('vstatus').textContent="Loading FULL MOVIE INSIDE APP - NO ADS - Verifying MP4 (fixes 0:00)...";document.getElementById('vlicense').textContent="INSIDE - NO ADS - NO REDIRECT";document.getElementById('vid').poster=m.img;
-(async()=>{
-try{let meta=await fetch(`https://archive.org/metadata/${m.id}`).then(r=>r.json());let files=(meta.files||[]).filter(f=>f.name.endsWith(".mp4")&&f.size>500000).sort((a,b)=>b.size-a.size);let best=files.find(f=>f.name.includes("512kb"))||files[0];if(best){let url=`https://archive.org/download/${m.id}/${best.name}`;let v=document.getElementById('vid');v.src=url;v.load();v.play().then(()=>{document.getElementById('vstatus').textContent=`● FULL MOVIE Playing INSIDE VINIUS MOVIES: ${best.name} • ${m.license} • NO ADS • NO REDIRECT ✅`;}).catch(()=>{document.getElementById('vstatus').textContent=`FULL MOVIE Ready - Click play - ${best.name} - INSIDE - NO ADS`;});}else{document.getElementById('vstatus').textContent="No MP4 - Try another - INSIDE NO ADS";}}catch(e){document.getElementById('vid').src=`https://archive.org/download/${m.id}/${m.id}_512kb.mp4`;document.getElementById('vid').play();}
-})();
-}
-window.playM=playM;
-function closeP(){document.getElementById('player').classList.remove('show');let v=document.getElementById('vid');v.pause();v.src="";}window.closeP=closeP;
-async function init(){renderTabs();ALL=[...CURATED];let first=await fetchArchive(1);ALL=[...CURATED,...first];filtered=ALL.filter(m=>m.type==="inside");activeTab="inside";renderTabs();applyFilter();document.getElementById('statCount').textContent=`${ALL.length} Total - ${CURATED.filter(m=>m.type==="inside").length+first.length} Inside No Ads (play on app) + ${CURATED.filter(m=>m.type==="kanopy").length} Kanopy No Ads (newer) + ${CURATED.filter(m=>m.type==="hoopla").length} Hoopla No Ads (newer) + Official - Upgrade Complete ✅`;document.getElementById('loadmore').textContent=`Load More Inside No Ads - ${ALL.length} Total Loaded ⬇️`;}
-init();
-</script></body></html>
+
+$('filters').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-filter]');
+ if(!b)return;
+
+ activeFilter=b.dataset.filter;
+
+ document.querySelectorAll('.filter').forEach(x=>
+   x.classList.toggle('active',x===b)
+ );
+
+ render();
+});
+
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')closePlayer();
+});
+
+loadCatalog();
+</script>
+</body>
+</html>

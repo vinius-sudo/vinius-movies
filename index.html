@@ -1,58 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vinius Movies - Netflix Clone</title>
-<style>
-body{background:#000;color:#fff;margin:0;font-family:Arial}
-h2{margin:20px 10px}
-.row{display:flex;overflow-x:auto;gap:10px;padding:10px}
-.card{min-width:180px;height:260px;background:#111;border-radius:8px;overflow:hidden;cursor:pointer;position:relative}
-.card img{width:100%;height:100%;object-fit:cover}
-.card .title{position:absolute;bottom:0;background:linear-gradient(transparent,black);width:100%;padding:10px}
-#player{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;z-index:100;align-items:center;justify-content:center;flex-direction:column}
-#player video{width:90%;max-width:800px;max-height:70vh;background:#000}
-#close{position:absolute;top:20px;right:20px;font-size:30px;cursor:pointer}
-</style>
-</head>
-<body>
-<div id="player">
-<span id="close" onclick="document.getElementById('player').style.display='none';document.getElementById('vid').pause()">✕</span>
-<h2 id="movieTitle">Now Playing</h2>
-<video id="vid" controls autoplay playsinline></video>
-</div>
-
-<h2>🔥 Trending Now</h2>
-<div class="row" id="trending"></div>
-
-<h2>🎬 Public Domain Classics</h2>
-<div class="row" id="classics"></div>
-
-<h2>🎨 Animation - Pixar Style</h2>
-<div class="row" id="anim"></div>
-
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>VINIUS</title><style>body{margin:0;background:#000;color:#fff;font-family:Arial}.logo{color:#e50914;font-weight:900;font-size:26px;padding:15px}.hero{padding:30px 20px;background:#111}.btn{background:#e50914;color:#fff;border:none;padding:12px 24px;border-radius:4px;font-weight:bold}.grid{display:flex;flex-wrap:wrap;gap:12px;padding:15px}.card{width:160px;background:#181818;border-radius:6px;overflow:hidden}.card img{width:100%;height:90px;object-fit:cover}.name{padding:6px;font-size:11px;height:36px}#box{position:fixed;inset:0;background:#000;display:none;z-index:99;flex-direction:column}#box.show{display:flex}#box iframe{width:100%;flex:1;border:none}.x{position:absolute;top:10px;right:10px;background:#e50914;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;z-index:100}</style></head><body>
+<div class="logo">VINIUS - REAL MOVIES</div>
+<div class="hero"><h2>12 Real Full Movies - Tap to Watch</h2><p>No cartoons. Archive.org safe. No 0:00.</p><button class="btn" onclick="play(0)">▶ PLAY</button></div>
+<div class="grid" id="g"></div>
+<div id="box"><span class="x" onclick="closeP()">✕</span><iframe id="f" allowfullscreen></iframe></div>
 <script>
-const movies=[
-{title:"Big Buck Bunny",cat:"trending",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",thumb:"https://peach.blender.org/wp-content/uploads/bunny_poster.jpg"},
-{title:"Tears of Steel",cat:"classics",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",thumb:"https://mango.blender.org/wp-content/uploads/2013/05/01_thom_celia_bridge.jpg"},
-{title:"Sintel",cat:"trending",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",thumb:"https://durian.blender.org/wp-content/uploads/2010/05/sintel_poster.jpg"},
-{title:"Elephant Dream",cat:"anim",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",thumb:"https://orange.blender.org/wp-content/themes/orange/images/common/ed_header.jpg"},
-{title:"For Bigger Blazes",cat:"trending",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",thumb:"https://peach.blender.org/wp-content/uploads/title_anouncement.jpg"},
-{title:"Night of the Living Dead",cat:"classics",video:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",thumb:"https://upload.wikimedia.org/wikipedia/commons/3/32/Night_of_the_Living_Dead_%281968%29_theatrical_poster.jpg"}
+const M=[
+{id:"night-of-the-living-dead-1968-colorized",t:"Night of the Living Dead COLOR"},
+{id:"house_on_haunted_hill",t:"House on Haunted Hill (1959)"},
+{id:"TheLastManOnEarth_201403",t:"The Last Man on Earth"},
+{id:"Plan9FromOuterSpace",t:"Plan 9 From Outer Space"},
+{id:"CarnivalOfSouls",t:"Carnival of Souls"},
+{id:"Nosferatu1922",t:"Nosferatu (1922)"},
+{id:"Charade_1963",t:"Charade - Audrey Hepburn"},
+{id:"HisGirlFriday",t:"His Girl Friday"},
+{id:"WhiteZombie1932",t:"White Zombie"},
+{id:"TheGeneral1926",t:"The General - Buster Keaton"},
+{id:"Scarlet_Street_1945",t:"Scarlet Street"},
+{id:"TheLittleShopOfHorrors",t:"Little Shop of Horrors"},
 ];
-function play(m){
- document.getElementById('movieTitle').innerText=m.title;
- document.getElementById('vid').src=m.video;
- document.getElementById('player').style.display='flex';
- document.getElementById('vid').play();
-}
-movies.forEach(m=>{
- let d=document.createElement('div');
- d.className='card';
- d.innerHTML=`<img src="${m.thumb}" onerror="this.src='https://via.placeholder.com/180x260/111/fff?text=${m.title}'"><div class="title">${m.title}</div>`;
- d.onclick=()=>play(m);
- document.getElementById(m.cat).appendChild(d);
-});
-</script>
-</body>
-</html>
+const g=document.getElementById('g');
+M.forEach((m,i)=>{g.innerHTML+=`<div class="card" onclick="play(${i})"><img src="https://archive.org/services/img/${m.id}"><div class="name">${m.t}</div></div>`});
+function play(i){document.getElementById('f').src="https://archive.org/embed/"+M[i].id;document.getElementById('box').classList.add('show');}
+function closeP(){document.getElementById('box').classList.remove('show');document.getElementById('f').src='';}
+</script></body></html>

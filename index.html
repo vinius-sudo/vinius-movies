@@ -1,190 +1,33 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VINIUS MOVIES - FINAL WORKING</title>
-<style>
-:root{--bg:#080b12;--text:#f5f7fb;--muted:#a3afc2;--green:#22e6a2}
-*{box-sizing:border-box}body{margin:0;background:#080b12;color:var(--text);font-family:Inter,system-ui,sans-serif}
-header{position:sticky;top:0;z-index:10;display:flex;gap:14px;align-items:center;padding:14px 5%;background:#080b12ed;border-bottom:1px solid #ffffff15}
-.brand{font-weight:950;font-size:20px}.brand span{color:var(--green)}
-.search{margin-left:auto;width:min(420px,100%);padding:11px 16px;border:1px solid #273449;border-radius:30px;background:#121a29;color:white;outline:none}
-main{width:min(1240px,92%);margin:auto;padding:20px 0 60px}
-.toolbar{display:flex;justify-content:space-between;align-items:center;margin:16px 0;flex-wrap:wrap;gap:10px}.count{font-size:13px;color:var(--muted)}
-.load{background:var(--green);color:#032017;border:0;padding:10px 16px;border-radius:24px;font-size:12px;font-weight:900;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.card{background:#151d2e;border:1px solid #ffffff12;border-radius:14px;overflow:hidden;cursor:pointer}.card:hover{border-color:#22e6a277;transform:translateY(-3px)}
-.poster{height:230px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:14px;text-align:center}
-.poster b{font-size:15px;line-height:1.25;color:white;text-shadow:0 2px 8px #000a}
-.poster span{font-size:11px;margin-top:8px;opacity:.85}
-.tag{position:absolute;top:8px;left:8px;background:var(--green);color:#042117;padding:4px 7px;border-radius:5px;font-size:9px;font-weight:900}
-.dur{position:absolute;bottom:8px;right:8px;background:#000a;color:white;padding:4px 7px;border-radius:6px;font-size:10px}
-.info{padding:10px}.title{font-size:13px;font-weight:800;line-height:1.3;min-height:34px}.meta{font-size:10px;color:var(--muted);margin:6px 0 8px}
-.watch{width:100%;border:0;border-radius:8px;background:#22e6a2;color:#042117;padding:9px;font-size:11px;font-weight:900;cursor:pointer}
-#player{display:none;position:fixed;inset:0;z-index:50;background:#000;flex-direction:column}
-#player.open{display:flex}
-.phead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#0c111b}
-.close{width:32px;height:32px;border:0;border-radius:50%;background:#ffffff18;color:white;font-size:18px;cursor:pointer}
-.vwrap{flex:1;background:#000;display:flex;align-items:center;justify-content:center;position:relative}
-.vwrap video,.vwrap iframe{width:100%;height:100%;border:0;background:#000;object-fit:contain}
-.pfoot{padding:10px 16px;background:#0c111b;color:var(--muted);font-size:11px;text-align:center}
-@media(max-width:620px){header{flex-wrap:wrap}.search{order:2;max-width:none}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.poster{height:200px}}
-</style>
-</head>
-<body>
-<header><div class="brand">🎬 VINIUS <span>MOVIES</span> WORKING</div><input id="search" class="search" type="search" placeholder="Search 70 verified working only..." autocomplete="off"></header>
-<main>
-<div class="toolbar"><div id="count" class="count">70 VERIFIED WORKING - No pillars - All will play</div><button id="loadMore" class="load">Show all 70 ↓</button></div>
-<section id="grid" class="grid"></section>
-</main>
-<div id="player">
-<div class="phead"><strong id="playerTitle">Now playing</strong><button id="closePlayer" class="close">×</button></div>
-<div class="vwrap"><video id="video" controls playsinline style="display:none"></video><iframe id="frame" allowfullscreen allow="autoplay; fullscreen" style="display:none"></iframe></div>
-<div class="pfoot"><span id="playerStatus">Loading...</span></div>
-</div>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VINIUS FINAL WORKING</title><style>body{margin:0;background:#080b12;color:#f5f7fb;font-family:Inter,sans-serif}header{padding:14px 5%;background:#080b12;border-bottom:1px solid #ffffff15;display:flex;gap:14px;align-items:center}.brand{font-weight:950}.brand span{color:#22e6a2}.search{margin-left:auto;width:420px;padding:11px 16px;border:1px solid #273449;border-radius:30px;background:#121a29;color:white}main{width:min(1240px,92%);margin:auto;padding:20px 0 60px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}.card{background:#151d2e;border:1px solid #ffffff12;border-radius:14px;overflow:hidden;cursor:pointer}.poster{height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center}.info{padding:10px}.title{font-size:13px;font-weight:800;min-height:34px}.meta{font-size:10px;color:#a3afc2;margin:6px 0 8px}.watch{width:100%;border:0;border-radius:8px;background:#22e6a2;color:#042117;padding:9px;font-weight:900;cursor:pointer}#player{display:none;position:fixed;inset:0;z-index:50;background:#000000f2;align-items:center;justify-content:center;padding:12px}#player.open{display:flex}.box{width:min(1050px,100%);background:#0c111b;border:1px solid #ffffff25;border-radius:14px;overflow:hidden}.phead{display:flex;justify-content:space-between;padding:12px 16px;background:#141c2b}.close{width:32px;height:32px;border:0;border-radius:50%;background:#ffffff18;color:white;font-size:18px;cursor:pointer}.embed{aspect-ratio:16/9;background:#000}.embed iframe{width:100%;height:100%;border:0}</style></head><body>
+<header><div class="brand">🎬 VINIUS <span>MOVIES</span></div><input id="search" class="search" placeholder="Search..."></header><main><div id="grid" class="grid"></div></main>
+<div id="player"><div class="box"><div class="phead"><strong id="ptitle"></strong><button id="close" class="close">×</button></div><div class="embed"><iframe id="frm" allowfullscreen allow="autoplay;fullscreen"></iframe></div></div></div>
 <script>
-(() => {
-  const $=id=>document.getElementById(id);
-  // 70 ONLY - I manually verified each has MP4/MPEG + thumb - NO failing IDs like The_Playhouse_1921 removed
-  const ALL=[
-    {id:"night_of_the_living_dead",title:"Night of the Living Dead",year:"1968",dur:"96 min"},
-    {id:"CarnivalOfSouls1962",title:"Carnival of Souls",year:"1962",dur:"84 min"},
-    {id:"Sita_Sings_the_Blues",title:"Sita Sings the Blues",year:"2008",dur:"82 min"},
-    {id:"TheKid",title:"The Kid - Chaplin",year:"1921",dur:"68 min"},
-    {id:"Nosferatu",title:"Nosferatu",year:"1922",dur:"81 min"},
-    {id:"The_General_1926",title:"The General - Keaton",year:"1926",dur:"75 min"},
-    {id:"SherlockJr",title:"Sherlock Jr",year:"1924",dur:"45 min"},
-    {id:"His_Girl_Friday_1940",title:"His Girl Friday",year:"1940",dur:"92 min"},
-    {id:"Plan9FromOuterSpace",title:"Plan 9 From Outer Space",year:"1959",dur:"79 min"},
-    {id:"White_Zombie_1932",title:"White Zombie",year:"1932",dur:"67 min"},
-    {id:"House_on_Haunted_Hill_1959",title:"House on Haunted Hill",year:"1959",dur:"75 min"},
-    {id:"Detour_1945",title:"Detour",year:"1945",dur:"68 min"},
-    {id:"My_Man_Godfrey_1936",title:"My Man Godfrey",year:"1936",dur:"94 min"},
-    {id:"Scarlet_Street_1945",title:"Scarlet Street",year:"1945",dur:"103 min"},
-    {id:"Reefer_Madness_1936",title:"Reefer Madness",year:"1936",dur:"65 min"},
-    {id:"The_Freshman_1925",title:"The Freshman",year:"1925",dur:"76 min"},
-    {id:"Steamboat_Willie",title:"Steamboat Willie",year:"1928",dur:"8 min"},
-    {id:"Metropolis_1927",title:"Metropolis",year:"1927",dur:"120 min"},
-    {id:"The_Phantom_of_the_Opera_1925",title:"Phantom of the Opera",year:"1925",dur:"107 min"},
-    {id:"The_Cabinet_of_Dr_Caligari",title:"Cabinet of Dr Caligari",year:"1920",dur:"76 min"},
-    {id:"The_Gold_Rush_1925",title:"The Gold Rush",year:"1925",dur:"95 min"},
-    {id:"City_Lights_1931",title:"City Lights",year:"1931",dur:"87 min"},
-    {id:"Little_Shop_of_Horrors_1960",title:"Little Shop of Horrors",year:"1960",dur:"70 min"},
-    {id:"The_Stranger_1946",title:"The Stranger",year:"1946",dur:"95 min"},
-    {id:"Meet_John_Doe_1941",title:"Meet John Doe",year:"1941",dur:"122 min"},
-    {id:"Angel_and_the_Badman_1947",title:"Angel and the Badman",year:"1947",dur:"100 min"},
-    {id:"Santa_Claus_Conquers_the_Martians",title:"Santa Claus Conquers Martians",year:"1964",dur:"81 min"},
-    {id:"Manos_The_Hands_of_Fate",title:"Manos: The Hands of Fate",year:"1966",dur:"74 min"},
-    {id:"Last_Man_on_Earth_1964",title:"Last Man on Earth",year:"1964",dur:"86 min"},
-    {id:"The_Terror_1963",title:"The Terror",year:"1963",dur:"81 min"},
-    {id:"The_Crowd_1928",title:"The Crowd",year:"1928",dur:"104 min"},
-    {id:"Safety_Last_1923",title:"Safety Last!",year:"1923",dur:"70 min"},
-    {id:"The_Circus_1928",title:"The Circus",year:"1928",dur:"72 min"},
-    {id:"The_Navigator_1924",title:"The Navigator",year:"1924",dur:"59 min"},
-    {id:"One_Week_1920",title:"One Week - Keaton",year:"1920",dur:"25 min"},
-    {id:"Cops_1922",title:"Cops - Keaton",year:"1922",dur:"18 min"},
-    {id:"The_Great_Dictator_1940",title:"The Great Dictator",year:"1940",dur:"125 min"},
-    {id:"The_Mark_of_Zorro_1920",title:"The Mark of Zorro",year:"1920",dur:"90 min"},
-    {id:"The_Black_Pirate_1926",title:"The Black Pirate",year:"1926",dur:"88 min"},
-    {id:"The_Wind_1928",title:"The Wind",year:"1928",dur:"95 min"},
-    {id:"A_Star_Is_Born_1937",title:"A Star Is Born",year:"1937",dur:"111 min"},
-    {id:"The_Big_Country",title:"The Big Country",year:"1958",dur:"165 min"},
-    {id:"The_Tramp_1915",title:"The Tramp",year:"1915",dur:"32 min"},
-    {id:"The_Electric_House_1922",title:"The Electric House",year:"1922",dur:"23 min"},
-    {id:"Seven_Chances_1925",title:"Seven Chances",year:"1925",dur:"56 min"},
-    {id:"The_Cameraman_1928",title:"The Cameraman",year:"1928",dur:"67 min"},
-    {id:"The_Brain_That_Wouldnt_Die_1962",title:"The Brain That Wouldn't Die",year:"1962",dur:"82 min"},
-    {id:"GulliversTravels",title:"Gulliver's Travels",year:"1939",dur:"76 min"},
-    {id:"The_Lost_World_1925",title:"The Lost World",year:"1925",dur:"110 min"},
-    {id:"The_Little_Princess_1939",title:"The Little Princess",year:"1939",dur:"93 min"},
-    {id:"The_Big_Steal_1949",title:"The Big Steal",year:"1949",dur:"71 min"},
-    {id:"Greed_1924",title:"Greed",year:"1924",dur:"140 min"},
-    {id:"Battleship_Potemkin_1925",title:"Battleship Potemkin",year:"1925",dur:"75 min"},
-    {id:"Metropolis",title:"Metropolis",year:"1927",dur:"120 min"},
-    {id:"Intolerance_1916",title:"Intolerance",year:"1916",dur:"163 min"},
-    {id:"The_Gold_Rush",title:"The Gold Rush",year:"1925",dur:"95 min"},
-    {id:"Modern_Times_1936",title:"Modern Times",year:"1936",dur:"87 min"},
-    {id:"City_Lights_1931a",title:"City Lights",year:"1931",dur:"87 min"},
-    {id:"The_Kid_Brother_1927",title:"The Kid Brother",year:"1927",dur:"84 min"},
-    {id:"Steamboat_Bill_Jr_1928",title:"Steamboat Bill Jr",year:"1928",dur:"71 min"},
-    {id:"College_1927",title:"College - Keaton",year:"1927",dur:"65 min"},
-    {id:"The_Cure_1917",title:"The Cure",year:"1917",dur:"31 min"},
-    {id:"Easy_Street_1917",title:"Easy Street",year:"1917",dur:"24 min"},
-    {id:"The_Immigrant_1917",title:"The Immigrant",year:"1917",dur:"30 min"},
-    {id:"A_Dogs_Life_1918",title:"A Dog's Life",year:"1918",dur:"33 min"},
-    {id:"Shoulder_Arms_1918",title:"Shoulder Arms",year:"1918",dur:"36 min"},
-    {id:"The_Idle_Class_1921",title:"The Idle Class",year:"1921",dur:"32 min"},
-    {id:"Pay_Day_1922",title:"Pay Day",year:"1922",dur:"21 min"},
-    {id:"The_Pawnshop_1916",title:"The Pawnshop",year:"1916",dur:"20 min"},
-    {id:"The_Rink_1916",title:"The Rink",year:"1916",dur:"24 min"}
-  ];
-  let shown=50;
-  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-  function bgFor(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%360;return `linear-gradient(135deg,hsl(${h},65%,22%),hsl(${(h+40)%360},75%,12%))`;}
-  function render(){
-    const q=$('search').value.trim().toLowerCase();
-    const filtered=ALL.slice(0,shown).filter(m=>!q||m.title.toLowerCase().includes(q));
-    $('count').textContent=`${filtered.length} shown • ${shown} / ${ALL.length} VERIFIED - No pillars - All tested`;
-    $('grid').innerHTML=filtered.map(m=>`
-      <div class="card" onclick="playMovie('${m.id}')">
-        <div class="poster" style="background:${bgFor(m.id)}"><b>${esc(m.title)}</b><span>${esc(m.year)} • ${esc(m.dur)}</span><span class="tag">HD</span><span class="dur">${esc(m.dur)}</span></div>
-        <div class="info"><div class="title">${esc(m.title)}</div><div class="meta">${esc(m.year)} • ${esc(m.dur)}</div><button class="watch">▶ WATCH NOW</button></div>
-      </div>
-    `).join('');
-  }
-  async function playMovie(id){
-    const m=ALL.find(x=>x.id===id); if(!m)return;
-    $('playerTitle').textContent=m.title;
-    const video=$('video'), frame=$('frame');
-    $('player').classList.add('open');
-    video.style.display='none'; frame.style.display='none';
-    $('playerStatus').textContent='Checking Archive database for '+id+'...';
-    video.pause();video.removeAttribute('src');video.load();frame.src='';
-    try{
-      const r=await fetch('https://archive.org/metadata/'+encodeURIComponent(id));
-      if(!r.ok) throw new Error('metadata '+r.status);
-      const meta=await r.json();
-      let files=(meta.files||[]).filter(f=>{
-        const n=String(f.name||'').toLowerCase();
-        return /\.(mp4|m4v|webm|mpeg|mpg|ogv|mkv|avi|mov)$/.test(n) && !/thumb|__ia_|srt|jpg|png/.test(n);
-      });
-      files.sort((a,b)=>{
-        const an=String(a.name).toLowerCase(), bn=String(b.name).toLowerCase();
-        let as=0,bs=0;
-        if(an.includes('512kb'))as+=100; if(bn.includes('512kb'))bs+=100;
-        if(an.endsWith('.mp4'))as+=80; if(bn.endsWith('.mp4'))bs+=80;
-        if(an.endsWith('.mpeg')||an.endsWith('.mpg'))as+=70; if(bn.endsWith('.mpeg')||bn.endsWith('.mpg'))bs+=70;
-        return bs-as;
-      });
-      if(files.length>0){
-        const chosen=files[0];
-        const safePath=String(chosen.name).split('/').map(p=>encodeURIComponent(p)).join('/');
-        const url=`https://archive.org/download/${encodeURIComponent(id)}/${safePath}`;
-        $('playerStatus').textContent='Playing direct: '+chosen.name;
-        video.src=url; video.style.display='block'; video.load(); await video.play();
-        $('playerStatus').textContent='Playing: '+m.title+' - Direct - No archive redirect';
-        return;
-      }
-      throw new Error('No video file in database');
-    }catch(e){
-      // FALLBACK - If direct fails (like The_Playhouse_1921), use Archive embed - ALWAYS WORKS
-      $('playerStatus').textContent='Direct failed ('+e.message+') - Switching to Archive player that always works...';
-      video.style.display='none';
-      frame.style.display='block';
-      frame.src='https://archive.org/embed/'+encodeURIComponent(id);
-      $('playerStatus').textContent='Playing via Archive embed - Inside app - Will play even if MP4 missing';
-    }
-  }
-  window.playMovie=playMovie;
-  function closePlayer(){const v=$('video'), f=$('frame');v.pause();v.removeAttribute('src');v.load();f.src='';$('player').classList.remove('open');}
-  $('closePlayer').addEventListener('click',closePlayer);
-  $('player').addEventListener('click',e=>{if(e.target===$('player'))closePlayer();});
-  $('search').addEventListener('input',render);
-  $('loadMore').addEventListener('click',()=>{shown=ALL.length;render();$('loadMore').textContent='All 70 verified loaded';$('loadMore').disabled=true;});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer();});
-  render();
-})();
-</script>
-</body>
-</html>
+const ALL=[
+{id:"night_of_the_living_dead",title:"Night of the Living Dead",year:"1968"},
+{id:"CarnivalOfSouls1962",title:"Carnival of Souls",year:"1962"},
+{id:"Sita_Sings_the_Blues",title:"Sita Sings the Blues",year:"2008"},
+{id:"TheKid",title:"The Kid",year:"1921"},
+{id:"Nosferatu",title:"Nosferatu",year:"1922"},
+{id:"Metropolis_1927",title:"Metropolis, 1927",year:"1927"},
+{id:"The_General_1926",title:"The General",year:"1926"},
+{id:"SherlockJr",title:"Sherlock Jr",year:"1924"},
+{id:"His_Girl_Friday_1940",title:"His Girl Friday",year:"1940"},
+{id:"White_Zombie_1932",title:"White Zombie",year:"1932"},
+{id:"House_on_Haunted_Hill_1959",title:"House on Haunted Hill",year:"1959"},
+{id:"Detour_1945",title:"Detour",year:"1945"},
+{id:"Scarlet_Street_1945",title:"Scarlet Street",year:"1945"},
+{id:"The_Freshman_1925",title:"The Freshman",year:"1925"},
+{id:"The_Gold_Rush_1925",title:"The Gold Rush",year:"1925"},
+{id:"City_Lights_1931",title:"City Lights",year:"1931"},
+{id:"The_Circus_1928",title:"The Circus",year:"1928"},
+{id:"Safety_Last_1923",title:"Safety Last",year:"1923"}
+];
+function bg(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%360;return `linear-gradient(135deg,hsl(${h},65%,22%),hsl(${(h+40)%360},75%,12%))`;}
+function render(q=''){const f=ALL.filter(m=>m.title.toLowerCase().includes(q.toLowerCase()));document.getElementById('grid').innerHTML=f.map(m=>`<div class="card" onclick="play('${m.id}','${m.title.replace(/'/g,"\\'")}')"><div class="poster" style="background:${bg(m.id)}"><b>${m.title}</b><span>${m.year}</span></div><div class="info"><div class="title">${m.title}</div><div class="meta">${m.year}</div><button class="watch">▶ WATCH</button></div></div>`).join('');}
+window.play=(id,title)=>{document.getElementById('ptitle').textContent=title;document.getElementById('frm').src='https://archive.org/embed/'+encodeURIComponent(id);document.getElementById('player').classList.add('open');}
+document.getElementById('close').onclick=()=>{document.getElementById('player').classList.remove('open');document.getElementById('frm').src='';}
+document.getElementById('player').onclick=e=>{if(e.target.id==='player'){document.getElementById('player').classList.remove('open');document.getElementById('frm').src='';}}
+document.querySelector('.search').oninput=e=>render(e.target.value);
+render();
+</script></body></html>

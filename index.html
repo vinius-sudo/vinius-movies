@@ -1,91 +1,110 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VINIUS REVISION V5 CLEAN</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VINIUS WIFI - Pay to Connect</title>
 <style>
-:root{--bg:#080c18;--card:#10172a;--card2:#1a2340;--line:#1e2a4a;--green:#00ff88;--blue:#3b82f6;--purple:#8b5cf6;--text:#f1f5f9;--muted:#94a3b8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-header{position:sticky;top:0;z-index:30;background:rgba(8,12,24,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 4%;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.brand{font-weight:950;font-size:20px;letter-spacing:-.5px}.brand span{color:var(--green);text-shadow:0 0 14px var(--green)}
-.search{flex:1;display:flex;gap:8px;min-width:200px}.search input{flex:1;padding:10px 14px;border-radius:30px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none}.search button{border:0;background:var(--green);color:#052e16;padding:10px 16px;border-radius:30px;font-weight:900;cursor:pointer}
-.badge-safe{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px;background:#00ff8820;color:var(--green);border:1px solid #00ff8840}
-.levels{display:flex;gap:6px;overflow:auto;padding:10px 4%;border-bottom:1px solid var(--line);background:var(--card)}
-.levels button{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}.levels button.active{background:var(--text);color:var(--bg)}
-main{width:min(1280px,94%);margin:auto;padding:14px 0 70px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--green)}
-.card-top{padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px}.badge.kcse{background:#00ff8820;color:var(--green);border:1px solid #00ff8840}.badge.g9{background:#3b82f620;color:#93c5fd;border:1px solid #3b82f640}.badge.campus{background:#8b5cf620;color:#c4b5fd;border:1px solid #8b5cf640}
-.card-body{padding:0 14px 14px}.card h4{margin:8px 0 4px;font-size:13px;line-height:1.35;min-height:36px}.meta{font-size:10px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
-.actions{display:flex;gap:8px;margin-top:10px}.actions a{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:12px;font-weight:900;font-size:11px}.btn-view{background:var(--card2);color:var(--text);border:1px solid var(--line)}.btn-dl{background:var(--green);color:#052e16}
-footer{border-top:1px solid var(--line);padding:18px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6}
+body{margin:0;background:#080c18;color:#f1f5f9;font-family:Inter,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:16px}
+.box{background:#10172a;border:1px solid #1e2a4a;border-radius:20px;width:min(400px,100%);padding:20px}
+h2{margin:0 0 6px;font-weight:950}h2 span{color:#00ff88;text-shadow:0 0 14px #00ff88}
+small{color:#94a3b8}
+.packages{display:grid;gap:10px;margin:18px 0}
+.pkg{border:1px solid #1e2a4a;background:#1a2340;border-radius:14px;padding:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:.2s}
+.pkg:hover{border-color:#00ff88;box-shadow:0 0 0 1px #00ff8840}
+.pkg b{font-size:14px}.pkg span{font-size:11px;color:#94a3b8}
+.pkg .price{background:#00ff88;color:#052e16;padding:6px 12px;border-radius:20px;font-weight:900;font-size:13px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #1e2a4a;background:#080c18;color:#fff;outline:none;margin:10px 0;box-sizing:border-box}
+button{width:100%;padding:14px;border-radius:12px;border:0;background:#00ff88;color:#052e16;font-weight:900;font-size:14px;cursor:pointer}
+.timer{display:none;text-align:center;padding:20px}
+.timer b{font-size:36px;color:#00ff88}
 </style>
 </head>
 <body>
-<header>
-<div class="brand">VINIUS <span>REVISION V5</span></div>
-<div class="search"><input id="q" placeholder="Search Biology, Maths, Grade 9..."><button onclick="render()">Search</button></div>
-<div class="badge-safe">✅ CLEAN - NO GAMBLING</div>
-</header>
+<div class="box" id="loginBox">
+<h2>VINIUS <span>WIFI</span></h2>
+<small>Thika - Fast - Pay via M-Pesa - Auto Disconnect</small>
 
-<div class="levels" id="levels">
-<button class="active" data-l="all" onclick="setLevel('all')">All Clean</button>
-<button data-l="kcse" onclick="setLevel('kcse')">🔥 KCSE</button>
-<button data-l="g9" onclick="setLevel('g9')">📚 Grade 9</button>
-<button data-l="campus" onclick="setLevel('campus')">🎓 Campus</button>
+<div class="packages" id="packages">
+<div class="pkg" onclick="selectPkg(20,3600,'1 HOUR')"><div><b>1 HOUR</b><br><span>For browsing + WhatsApp</span></div><div class="price">20 KES</div></div>
+<div class="pkg" onclick="selectPkg(50,10800,'3 HOURS')"><div><b>3 HOURS</b><br><span>For YouTube + Study</span></div><div class="price">50 KES</div></div>
+<div class="pkg" onclick="selectPkg(100,86400,'1 DAY')"><div><b>1 DAY</b><br><span>Best for students</span></div><div class="price">100 KES</div></div>
+<div class="pkg" onclick="selectPkg(350,604800,'1 WEEK')"><div><b>1 WEEK</b><br><span>For Keja / Shop</span></div><div class="price">350 KES</div></div>
 </div>
 
-<main>
-<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px"><h3 style="margin:0;font-size:15px">🔒 Safe Linked Notes - Direct PDF</h3><small style="color:var(--muted)" id="count"></small></div>
-<div class="grid" id="grid"></div>
-<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:20px;font-size:12px;color:var(--muted)">
-<b style="color:var(--text)">How to add your own notes with no spam:</b><br>
-1. GitHub → Add file → Upload `papers/biology2023.pdf`<br>
-2. Link becomes `/papers/biology2023.pdf` - 100% safe, no gambling<br>
-3. Student clicks Download → Gets your PDF direct - Works on 35KB/S
+<div id="payArea" style="display:none">
+<p id="chosen" style="font-weight:800"></p>
+<input id="phone" placeholder="M-Pesa Number: 07XX XXX XXX">
+<button onclick="pay()">LIPA NA M-PESA - PAY NOW</button>
+<small style="display:block;margin-top:8px;text-align:center">STK Push will come to your phone - Enter PIN</small>
 </div>
-</main>
+</div>
 
-<footer>VINIUS REVISION V5 CLEAN<br>Safe sources only: EasyElimu.com + Your GitHub /papers folder<br>No Togel, No infodatasydney.com, No Ads Redirect</footer>
+<div class="box timer" id="timerBox">
+<h2>CONNECTED ✅</h2>
+<p id="pkgName"></p>
+<b id="countdown">60:00</b>
+<p><small>Time left - Auto disconnect when 00:00</small></p>
+<button onclick="disconnect()" style="background:#1a2340;color:#fff;border:1px solid #1e2a4a;margin-top:10px">Disconnect Now</button>
+</div>
 
 <script>
-// V5 CLEAN - ONLY TRUSTED SOURCES - NO TOGEL
-const NOTES=[
-{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 1 - EasyElimu 2023",url:"https://www.easyelimu.com/high-school/kcse-biology-paper-1-2023",source:"EasyElimu.com"},
-{level:"kcse",sub:"Chemistry",title:"KCSE Chemistry Paper 1 - EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-chemistry-paper-1-2023",source:"EasyElimu.com"},
-{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 1 - EasyElimu with Answers",url:"https://www.easyelimu.com/high-school/kcse-2023-maths-paper-1",source:"EasyElimu.com"},
-{level:"kcse",sub:"Physics",title:"KCSE Physics - EasyElimu Notes",url:"https://www.easyelimu.com/high-school/physics-notes",source:"EasyElimu.com"},
-{level:"kcse",sub:"English",title:"KCSE English Paper 2 - Set Books",url:"https://www.easyelimu.com/high-school/kcse-english-paper-2-2023",source:"EasyElimu.com"},
-{level:"g9",sub:"Maths",title:"Grade 9 Maths Notes - CBC",url:"https://www.easyelimu.com/junior-secondary/grade-9-maths-notes",source:"EasyElimu.com"},
-{level:"g9",sub:"Science",title:"Grade 9 Integrated Science Notes",url:"https://www.easyelimu.com/junior-secondary/grade-9-integrated-science-notes",source:"EasyElimu.com"},
-{level:"campus",sub:"Business",title:"Your Own MKU Notes - Example (Upload to /papers)",url:"/papers/mku-business.pdf",source:"Your GitHub /papers"},
-{level:"campus",sub:"ICT",title:"Thika Tech ICT Notes - Example",url:"/papers/ict-notes.pdf",source:"Your GitHub /papers"},
-{level:"kcse",sub:"Kiswahili",title:"KCSE Kiswahili - EasyElimu",url:"https://www.easyelimu.com/high-school/kiswahili-notes",source:"EasyElimu.com"}
-];
+let selectedPrice=0, selectedSeconds=0, timerInterval;
 
-let curLevel="all";
-function setLevel(l){curLevel=l;document.querySelectorAll('#levels button').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-l="${l}"]`).classList.add('active');render();}
-function render(){
-const q=document.getElementById('q').value.toLowerCase();
-let f=NOTES.filter(d=>(curLevel==='all'||d.level===curLevel)&&(!q||d.title.toLowerCase().includes(q)||d.sub.toLowerCase().includes(q)));
-document.getElementById('count').textContent=f.length+" clean links";
-document.getElementById('grid').innerHTML=f.map(d=>`
-<div class="card">
-<div class="card-top"><span class="badge ${d.level}">${d.level.toUpperCase()} • ${d.sub.toUpperCase()}</span><span class="badge-safe">SAFE</span></div>
-<div class="card-body">
-<h4>${d.title}</h4>
-<div class="meta"><span>✅ ${d.source}</span><span>• Direct</span></div>
-<div class="actions">
-<a class="btn-view" href="${d.url}" target="_blank" rel="noopener">👁 View</a>
-<a class="btn-dl" href="${d.url}" target="_blank" rel="noopener">⬇ Download</a>
-</div>
-</div>
-</div>
-`).join('');
+function selectPkg(price, seconds, name){
+selectedPrice=price; selectedSeconds=seconds;
+document.getElementById('chosen').innerText=`You chose ${name} - ${price} KES`;
+document.getElementById('payArea').style.display='block';
+document.getElementById('payArea').scrollIntoView();
 }
-document.getElementById('q').addEventListener('input',render);
-render();
+
+function pay(){
+let phone=document.getElementById('phone').value;
+if(phone.length<10){alert('Enter valid M-Pesa number 07...');return}
+alert(`M-Pesa STK Push: ${selectedPrice} KES to Till 123456\n\nFor demo: Simulating payment success...\n\nReplace this with real Daraja API code`);
+// Simulate payment success - In real, wait for Daraja callback
+startSession();
+}
+
+function startSession(){
+document.getElementById('loginBox').style.display='none';
+document.getElementById('timerBox').style.display='block';
+document.getElementById('pkgName').innerText=`Package: ${selectedPrice} KES`;
+let timeLeft=selectedSeconds;
+updateDisplay(timeLeft);
+timerInterval=setInterval(()=>{
+timeLeft--; updateDisplay(timeLeft);
+localStorage.setItem('vinius_wifi_expire', Date.now() + timeLeft*1000);
+if(timeLeft<=0){disconnect(true)}
+},1000);
+// In real Mikrotik: Send MAC to allow list
+// fetch('/allow?mac='+clientMac+'&seconds='+selectedSeconds)
+}
+
+function updateDisplay(sec){
+let h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60), s=sec%60;
+document.getElementById('countdown').innerText=`${h>0?h+':':''}${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function disconnect(expired=false){
+clearInterval(timerInterval);
+if(expired){alert('⏰ Time Ended - Package expired - Pay again to connect');}
+else{alert('Disconnected')}
+// In real: fetch('/disconnect?mac='+clientMac) - Removes from hotspot active
+document.getElementById('timerBox').style.display='none';
+document.getElementById('loginBox').style.display='block';
+localStorage.removeItem('vinius_wifi_expire');
+}
+
+// Auto-resume if page reloaded
+let saved=localStorage.getItem('vinius_wifi_expire');
+if(saved && saved>Date.now()){
+let remaining=Math.floor((saved-Date.now())/1000);
+selectedSeconds=remaining; selectedPrice=100;
+document.getElementById('loginBox').style.display='none';
+document.getElementById('timerBox').style.display='block';
+let timeLeft=remaining; updateDisplay(timeLeft);
+timerInterval=setInterval(()=>{timeLeft--; updateDisplay(timeLeft); if(timeLeft<=0)disconnect(true)},1000);
+}
 </script>
 </body>
 </html>

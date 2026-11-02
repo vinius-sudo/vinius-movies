@@ -2,62 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VINIUS REVISION LIVE - Auto Linked Notes</title>
+<title>VINIUS REVISION V5 CLEAN</title>
 <style>
 :root{--bg:#080c18;--card:#10172a;--card2:#1a2340;--line:#1e2a4a;--green:#00ff88;--blue:#3b82f6;--purple:#8b5cf6;--text:#f1f5f9;--muted:#94a3b8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif}
-header{position:sticky;top:0;z-index:30;background:rgba(8,12,24,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 4%;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.brand{font-weight:950;font-size:20px}.brand span{color:var(--green);text-shadow:0 0 14px var(--green)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+header{position:sticky;top:0;z-index:30;background:rgba(8,12,24,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 4%;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.brand{font-weight:950;font-size:20px;letter-spacing:-.5px}.brand span{color:var(--green);text-shadow:0 0 14px var(--green)}
 .search{flex:1;display:flex;gap:8px;min-width:200px}.search input{flex:1;padding:10px 14px;border-radius:30px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none}.search button{border:0;background:var(--green);color:#052e16;padding:10px 16px;border-radius:30px;font-weight:900;cursor:pointer}
-.levels{display:flex;gap:6px;overflow:auto;padding:10px 4%;border-bottom:1px solid var(--line);background:var(--card)}.levels button{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}.levels button.active{background:var(--text);color:var(--bg)}
+.badge-safe{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px;background:#00ff8820;color:var(--green);border:1px solid #00ff8840}
+.levels{display:flex;gap:6px;overflow:auto;padding:10px 4%;border-bottom:1px solid var(--line);background:var(--card)}
+.levels button{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}.levels button.active{background:var(--text);color:var(--bg)}
 main{width:min(1280px,94%);margin:auto;padding:14px 0 70px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:0 10px 28px #00000050}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--green)}
 .card-top{padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:center}
 .badge{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px}.badge.kcse{background:#00ff8820;color:var(--green);border:1px solid #00ff8840}.badge.g9{background:#3b82f620;color:#93c5fd;border:1px solid #3b82f640}.badge.campus{background:#8b5cf620;color:#c4b5fd;border:1px solid #8b5cf640}
-.card-body{padding:0 14px 14px}.card h4{margin:8px 0 4px;font-size:13px;line-height:1.35;min-height:36px}.meta{font-size:10px;color:var(--muted);display:flex;gap:8px}
+.card-body{padding:0 14px 14px}.card h4{margin:8px 0 4px;font-size:13px;line-height:1.35;min-height:36px}.meta{font-size:10px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
 .actions{display:flex;gap:8px;margin-top:10px}.actions a{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:12px;font-weight:900;font-size:11px}.btn-view{background:var(--card2);color:var(--text);border:1px solid var(--line)}.btn-dl{background:var(--green);color:#052e16}
-.source{font-size:9px;color:var(--muted);margin-top:6px}footer{border-top:1px solid var(--line);padding:18px;text-align:center;color:var(--muted);font-size:11px}
+footer{border-top:1px solid var(--line);padding:18px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6}
 </style>
 </head>
 <body>
 <header>
-<div class="brand">VINIUS <span>REVISION LIVE</span></div>
-<div class="search"><input id="q" placeholder="Search Biology, Maths, Grade 9, MKU..."><button onclick="render()">Search</button></div>
+<div class="brand">VINIUS <span>REVISION V5</span></div>
+<div class="search"><input id="q" placeholder="Search Biology, Maths, Grade 9..."><button onclick="render()">Search</button></div>
+<div class="badge-safe">✅ CLEAN - NO GAMBLING</div>
 </header>
 
 <div class="levels" id="levels">
-<button class="active" data-l="all" onclick="setLevel('all')">All - Auto Linked</button>
+<button class="active" data-l="all" onclick="setLevel('all')">All Clean</button>
 <button data-l="kcse" onclick="setLevel('kcse')">🔥 KCSE</button>
 <button data-l="g9" onclick="setLevel('g9')">📚 Grade 9</button>
 <button data-l="campus" onclick="setLevel('campus')">🎓 Campus</button>
 </div>
 
 <main>
-<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px"><h3 style="margin:0;font-size:15px" id="headTitle">🔗 Live Linked Notes - No Upload Needed</h3><small style="color:var(--muted)" id="count"></small></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px"><h3 style="margin:0;font-size:15px">🔒 Safe Linked Notes - Direct PDF</h3><small style="color:var(--muted)" id="count"></small></div>
 <div class="grid" id="grid"></div>
+<div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:20px;font-size:12px;color:var(--muted)">
+<b style="color:var(--text)">How to add your own notes with no spam:</b><br>
+1. GitHub → Add file → Upload `papers/biology2023.pdf`<br>
+2. Link becomes `/papers/biology2023.pdf` - 100% safe, no gambling<br>
+3. Student clicks Download → Gets your PDF direct - Works on 35KB/S
+</div>
 </main>
 
-<footer>VINIUS REVISION LIVE - Notes auto-linked from Atika School, EasyElimu, KCSE Online - Click Download goes direct to source - Works on 35KB/S</footer>
+<footer>VINIUS REVISION V5 CLEAN<br>Safe sources only: EasyElimu.com + Your GitHub /papers folder<br>No Togel, No infodatasydney.com, No Ads Redirect</footer>
 
 <script>
-// LIVE LINKED NOTES - Like Inooro news RSS but for KCSE notes
-// These are PUBLIC FREE sites - No copyright issue - Direct links to their PDFs
+// V5 CLEAN - ONLY TRUSTED SOURCES - NO TOGEL
 const NOTES=[
-{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 1 2023 + Marking Scheme",source:"Atika School",url:"https://atikaschool.org/wp-content/uploads/2023/11/Biology-Paper-1-2023.pdf",views:"12k"},
-{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 2 2023",source:"Atika School",url:"https://atikaschool.org/kcse-biology-paper-2-2023",views:"9k"},
-{level:"kcse",sub:"Chemistry",title:"KCSE Chemistry Paper 1 2023 - Atika",source:"Atika School",url:"https://atikaschool.org/kcse-chemistry-paper-1-2023",views:"10k"},
-{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 1 2023 + Answers",source:"EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-2023-maths-paper-1",views:"15k"},
-{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 2 2023",source:"KCSE Online",url:"https://kcsepdf.co.ke/kcse-2023-maths-paper-2-pdf/",views:"11k"},
-{level:"kcse",sub:"Physics",title:"KCSE Physics Paper 1 2023 - Topical",source:"Atika",url:"https://atikaschool.org/kcse-physics-paper-1-2023",views:"8k"},
-{level:"kcse",sub:"English",title:"KCSE English Paper 2 2023 - Fathers of Nations",source:"EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-2023-english-paper-2",views:"7k"},
-{level:"kcse",sub:"Kiswahili",title:"KCSE Kiswahili Paper 2 2023",source:"Atika",url:"https://atikaschool.org/kcse-kiswahili-paper-2-2023",views:"5k"},
-{level:"g9",sub:"Maths",title:"Grade 9 Maths - CBC Notes - EasyElimu",source:"EasyElimu",url:"https://www.easyelimu.com/junior-secondary/grade-9-maths-notes",views:"4.3k"},
-{level:"g9",sub:"Integrated Science",title:"Grade 9 Integrated Science - Biology - Notes",source:"EasyElimu",url:"https://www.easyelimu.com/junior-secondary/grade-9-integrated-science-notes",views:"3.5k"},
-{level:"g9",sub:"Kiswahili",title:"Grade 9 Kiswahili - Mofimu Notes",source:"Atika JSS",url:"https://atikaschool.org/grade-9-kiswahili-notes",views:"2.8k"},
-{level:"campus",sub:"Business",title:"MKU Business Management - Notes PDF",source:"Notes Kenya",url:"https://noteskenya.com/mku-business-management-notes/",views:"2.1k"},
-{level:"campus",sub:"Education",title:"MKU Education - Psychology Notes",source:"Kenyaplex",url:"https://kenyaplex.com/mku-notes-education",views:"1.8k"},
-{level:"campus",sub:"IT",title:"Thika Technical - ICT Notes - Module 1",source:"Atika College",url:"https://atikaschool.org/diploma-ict-notes",views:"1.5k"}
+{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 1 - EasyElimu 2023",url:"https://www.easyelimu.com/high-school/kcse-biology-paper-1-2023",source:"EasyElimu.com"},
+{level:"kcse",sub:"Chemistry",title:"KCSE Chemistry Paper 1 - EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-chemistry-paper-1-2023",source:"EasyElimu.com"},
+{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 1 - EasyElimu with Answers",url:"https://www.easyelimu.com/high-school/kcse-2023-maths-paper-1",source:"EasyElimu.com"},
+{level:"kcse",sub:"Physics",title:"KCSE Physics - EasyElimu Notes",url:"https://www.easyelimu.com/high-school/physics-notes",source:"EasyElimu.com"},
+{level:"kcse",sub:"English",title:"KCSE English Paper 2 - Set Books",url:"https://www.easyelimu.com/high-school/kcse-english-paper-2-2023",source:"EasyElimu.com"},
+{level:"g9",sub:"Maths",title:"Grade 9 Maths Notes - CBC",url:"https://www.easyelimu.com/junior-secondary/grade-9-maths-notes",source:"EasyElimu.com"},
+{level:"g9",sub:"Science",title:"Grade 9 Integrated Science Notes",url:"https://www.easyelimu.com/junior-secondary/grade-9-integrated-science-notes",source:"EasyElimu.com"},
+{level:"campus",sub:"Business",title:"Your Own MKU Notes - Example (Upload to /papers)",url:"/papers/mku-business.pdf",source:"Your GitHub /papers"},
+{level:"campus",sub:"ICT",title:"Thika Tech ICT Notes - Example",url:"/papers/ict-notes.pdf",source:"Your GitHub /papers"},
+{level:"kcse",sub:"Kiswahili",title:"KCSE Kiswahili - EasyElimu",url:"https://www.easyelimu.com/high-school/kiswahili-notes",source:"EasyElimu.com"}
 ];
 
 let curLevel="all";
@@ -65,17 +69,16 @@ function setLevel(l){curLevel=l;document.querySelectorAll('#levels button').forE
 function render(){
 const q=document.getElementById('q').value.toLowerCase();
 let f=NOTES.filter(d=>(curLevel==='all'||d.level===curLevel)&&(!q||d.title.toLowerCase().includes(q)||d.sub.toLowerCase().includes(q)));
-document.getElementById('count').textContent=f.length+" notes linked";
+document.getElementById('count').textContent=f.length+" clean links";
 document.getElementById('grid').innerHTML=f.map(d=>`
 <div class="card">
-<div class="card-top"><span class="badge ${d.level}">${d.level.toUpperCase()} • ${d.sub.toUpperCase()}</span><span style="font-size:10px;color:var(--muted)">👁 ${d.views}</span></div>
+<div class="card-top"><span class="badge ${d.level}">${d.level.toUpperCase()} • ${d.sub.toUpperCase()}</span><span class="badge-safe">SAFE</span></div>
 <div class="card-body">
 <h4>${d.title}</h4>
-<div class="meta"><span>📚 ${d.sub}</span><span>• ${d.source}</span></div>
-<div class="source">Source: ${d.source} - Free public</div>
+<div class="meta"><span>✅ ${d.source}</span><span>• Direct</span></div>
 <div class="actions">
-<a class="btn-view" href="${d.url}" target="_blank">👁 View Online</a>
-<a class="btn-dl" href="${d.url}" target="_blank">⬇ Direct Download</a>
+<a class="btn-view" href="${d.url}" target="_blank" rel="noopener">👁 View</a>
+<a class="btn-dl" href="${d.url}" target="_blank" rel="noopener">⬇ Download</a>
 </div>
 </div>
 </div>

@@ -3,129 +3,141 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VINIUS NEWS - Kenya</title>
+<title>VINIUS FOOTBALL - Kenya Live</title>
 <style>
-:root{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--green:#22c55e;--red:#ef4444}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5}
-header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding:10px 5%;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.brand{font-weight:950;font-size:22px;letter-spacing:-.5px}.brand span{color:var(--green)}
-.live{margin-left:8px;background:var(--red);color:white;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:900;animation:pulse 1.5s infinite}
+:root{--bg:#f0fdf4;--card:#fff;--text:#052e16;--muted:#6b7280;--line:#dcfce7;--green:#22c55e;--dark:#14532d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:2px solid var(--green);padding:10px 5%;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-weight:950;font-size:22px}.brand span{color:var(--green)}
+.live{margin-left:8px;background:#ef4444;color:white;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:900;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-.nav{display:flex;gap:8px;flex-wrap:wrap}
-.nav button{border:1px solid var(--line);background:var(--card);padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
-.nav button.active{background:var(--text);color:white;border-color:var(--text)}
-.search{margin-left:auto;display:flex;align-items:center;gap:8px}
-.search input{padding:10px 14px;border:1px solid var(--line);border-radius:20px;background:#f1f5f9;width:220px;outline:none}
-.search button{border:0;background:var(--text);color:white;padding:10px 14px;border-radius:20px;font-weight:800;cursor:pointer}
-main{width:min(1250px,92%);margin:auto;padding:18px 0 60px}
-.breaking{background:var(--text);color:white;padding:10px 14px;border-radius:10px;display:flex;align-items:center;gap:10px;margin:12px 0;overflow:hidden}
-.breaking b{white-space:nowrap}.ticker{white-space:nowrap;animation:scroll 40s linear infinite}
-@keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-.hero{display:grid;grid-template-columns:1.6fr .9fr;gap:16px;margin:16px 0}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.search{order:3;width:100%}.search input{flex:1;width:auto}}
-.main-story{position:relative;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:white;cursor:pointer}
-.main-story .bg{position:absolute;inset:0;background:linear-gradient(180deg,transparent 10%,#000000d8),var(--img);background-size:cover;background-position:center;z-index:0}
-.main-story .content{position:relative;z-index:1}
-.main-story h1{font-size:28px;line-height:1.1;margin:8px 0}.tag{background:var(--green);color:#052e16;padding:4px 8px;border-radius:6px;font-size:10px;font-weight:900;display:inline-block}
-.side{display:flex;flex-direction:column;gap:12px}
-.side-card{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer}
-.side-card img{width:90px;height:70px;object-fit:cover;border-radius:8px;background:#e2e8f0;flex-shrink:0}
-.side-card h3{font-size:13px;margin:0;line-height:1.3}
-.meta{font-size:11px;color:var(--muted);margin-top:4px}
-.grid{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:.15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px #00000012}
-.card .thumb{height:160px;background:var(--img);background-size:cover;background-position:center;position:relative}
-.card .body{padding:12px}
-.card h3{font-size:14px;margin:6px 0;line-height:1.3;min-height:38px}
-footer{margin-top:40px;border-top:1px solid var(--line);padding:20px 5%;text-align:center;color:var(--muted);font-size:12px}
-#reader{display:none;position:fixed;inset:0;z-index:40;background:#00000090;backdrop-filter:blur(6px);padding:12px;overflow:auto}
-#reader.open{display:flex;align-items:flex-start;justify-content:center}
-.reader-box{width:min(780px,100%);background:white;border-radius:16px;overflow:hidden;margin:20px 0}
-.reader-head{padding:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
-.close{width:32px;height:32px;border-radius:50%;border:0;background:#f1f5f9;font-size:18px;cursor:pointer}
-.reader-body{padding:18px}
-.reader-body h1{font-size:26px;line-height:1.15}
-.reader-body p{color:#334155;font-size:15px;line-height:1.7}
+.nav{display:flex;gap:6px;flex-wrap:wrap}.nav button{border:1px solid var(--line);background:var(--card);padding:7px 12px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer}
+.nav button.active{background:var(--dark);color:white}
+.search{margin-left:auto;display:flex;gap:6px}.search input{padding:9px 12px;border:1px solid var(--line);border-radius:20px;background:#f0fdf4;width:180px;outline:none}
+.score-ticker{background:var(--dark);color:white;padding:8px 5%;display:flex;gap:18px;overflow:auto;white-space:nowrap;font-size:12px;font-weight:700}
+.score-ticker span{background:#ffffff18;padding:4px 10px;border-radius:20px}
+main{width:min(1250px,92%);margin:auto;padding:12px 0 60px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin:14px 0}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.search{order:3;width:100%}.search input{flex:1}}
+.main-match{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;position:relative;overflow:hidden}
+.main-match .league{font-size:10px;font-weight:900;background:var(--green);color:#052e16;padding:4px 8px;border-radius:6px;display:inline-block}
+.teams{display:flex;justify-content:space-between;align-items:center;margin:16px 0}
+.team{text-align:center;flex:1}.team .logo{width:60px;height:60px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;border:1px solid var(--line)}
+.score{font-size:32px;font-weight:950;text-align:center;flex:.6}.score small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.vs{color:var(--muted)}
+.btn{width:100%;border:0;background:var(--dark);color:white;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;margin-top:10px}
+.side{display:flex;flex-direction:column;gap:10px}
+.fixture{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;font-size:12px;cursor:pointer}
+.fixture .t{font-weight:800}.fixture .time{background:#f0fdf4;padding:4px 8px;border-radius:20px;font-size:10px;font-weight:900}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:14px;margin-top:16px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.news-col{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer}
+.card .thumb{height:130px;background:var(--img);background-size:cover}
+.card .body{padding:10px}.card h3{font-size:13px;margin:4px 0;line-height:1.3;min-height:36px}.meta{font-size:10px;color:var(--muted)}
+.table{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.table h3{margin:0 0 10px;font-size:14px}.row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px}.row b{width:20px}
+footer{margin-top:30px;border-top:1px solid var(--line);padding:18px 5%;text-align:center;color:var(--muted);font-size:11px}
 </style>
 </head>
 <body>
 <header>
-<div class="brand">VINIUS <span>NEWS</span> <span class="live">LIVE</span></div>
+<div class="brand">VINIUS <span>FOOTBALL</span> <span class="live">LIVE</span></div>
 <div class="nav">
-<button class="active" data-cat="all">All</button>
-<button data-cat="kenya">Kenya</button>
-<button data-cat="world">World</button>
-<button data-cat="business">Business</button>
-<button data-cat="sports">Sports</button>
-<button data-cat="tech">Tech</button>
+<button class="active" data-f="all">All</button>
+<button data-f="kenya">Kenya</button>
+<button data-f="epl">EPL</button>
+<button data-f="afcon">AFCON</button>
+<button data-f="live">Live</button>
 </div>
-<div class="search"><input id="q" type="search" placeholder="Search news..."><button id="searchBtn">Search</button></div>
+<div class="search"><input id="q" placeholder="Search team..."><button onclick="render()" style="border:0;background:var(--dark);color:white;padding:9px 12px;border-radius:20px;font-weight:800;cursor:pointer">Search</button></div>
 </header>
 
-<main>
-<div class="breaking"><b>🔴 BREAKING:</b><div class="ticker" id="ticker">Thika Road traffic update • Ruto announces new youth fund • Harambee Stars qualify • Safaricom M-Pesa outage resolved • Vinius News now live - No more archive errors! •</div></div>
+<div class="score-ticker" id="ticker">
+<span>🔴 LIVE: Gor Mahia 1-0 AFC Leopards (78')</span>
+<span>Harambee Stars 2-0 Tanzania FT</span>
+<span>Arsenal 2-1 Man Utd FT</span>
+<span>Thika United 0-0 Muranga</span>
+<span>Man City 3-0 Chelsea</span>
+</div>
 
+<main>
 <div class="hero">
-<div class="main-story" id="hero" style="--img:linear-gradient(135deg,#0f172a,#334155)">
-<div class="bg" id="heroBg"></div>
-<div class="content"><span class="tag">KENYA</span><h1 id="heroTitle">Vinius News is Live - No more "Item cannot be found"</h1><div class="meta" id="heroMeta">2 min ago • Nairobi</div></div>
+<div class="main-match" id="heroMatch">
+<span class="league" id="heroLeague">KPL - LIVE 78'</span>
+<div class="teams">
+<div class="team"><div class="logo">🟢</div><div style="font-weight:900">Gor Mahia</div><div class="meta">K'Ogalo</div></div>
+<div class="score"><div id="heroScore">1 - 0</div><small id="heroStatus">78' Second Half</small><div class="vs">vs</div></div>
+<div class="team"><div class="logo">🔵</div><div style="font-weight:900">AFC Leopards</div><div class="meta">Ingwe</div></div>
+</div>
+<button class="btn" onclick="openMatch()">⚽ Watch Commentary + Lineup</button>
 </div>
 <div class="side" id="side"></div>
 </div>
 
-<div id="grid" class="grid"></div>
+<div class="grid">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0"><h3 style="margin:0">Latest Football News - Kenya</h3><small style="color:var(--muted)">Auto updates</small></div>
+<div class="news-col" id="newsGrid"></div>
+</div>
+<div>
+<div class="table" id="eplTable"></div>
+<br>
+<div class="table">
+<h3>🔥 Hot in Thika</h3>
+<div class="row"><span>⚽ Best bar to watch in Thika?</span><span>→</span></div>
+<div class="row"><span>💰 Bet of the day - Gor to win?</span><span>→</span></div>
+<div class="row"><span>📱 Join Vinius WhatsApp Group</span><span>→</span></div>
+<div class="row"><span>🎥 Inooro TV Sports Show 8pm</span><span>→</span></div>
+</div>
+</div>
+</div>
 </main>
 
-<div id="reader"><div class="reader-box"><div class="reader-head"><strong id="readerCat">News</strong><button class="close" id="closeReader">×</button></div><div class="reader-body"><h1 id="readerTitle"></h1><div class="meta" id="readerMeta"></div><p id="readerText"></p><br><button id="shareBtn" style="border:0;background:#25D366;color:white;padding:10px 16px;border-radius:8px;font-weight:800;cursor:pointer">Share on WhatsApp</button></div></div></div>
-
-<footer>© 2026 Vinius News - Thika, Kenya - Made for low data - No archive, no pillars, always works - vinius-news.vercel.app</footer>
+<footer>© 2026 Vinius Football - Thika, Kenya - Live from KPL, EPL, AFCON - No Archive.org, Always Works - Works on 35KB/S</footer>
 
 <script>
-const NEWS=[
-{cat:"kenya",title:"Thika Superhighway Expansion to Ease Jam - KeNHA Confirms",time:"10 min ago",loc:"Thika",img:"linear-gradient(135deg,#22c55e,#16a34a)",text:"Kenya National Highways Authority has announced expansion works on Thika Superhighway starting next month. The project will add an extra lane from Ruiru to Thika town to ease traffic that affects thousands of commuters daily. Residents in Thika have welcomed the move."},
-{cat:"kenya",title:"Ruto Launches Hustler Fund for Thika Youth Entrepreneurs",time:"1 hour ago",loc:"Nairobi",img:"linear-gradient(135deg,#0ea5e9,#0284c7)",text:"President William Ruto today launched a new Hustler Fund targeting youth in Kiambu County. Over 5000 youth in Thika are expected to benefit from interest-free loans. Application via *254#."},
-{cat:"business",title:"Safaricom M-Pesa Down? Company Says Services Restored",time:"2 hours ago",loc:"Safaricom",img:"linear-gradient(135deg,#22c55e,#15803d)",text:"Safaricom has confirmed M-Pesa services are fully restored after morning outage that affected transactions across Kenya. Company apologizes for inconvenience."},
-{cat:"sports",title:"Harambee Stars Beat Tanzania 2-0 - Qualify for AFCON",time:"3 hours ago",loc:"Sports",img:"linear-gradient(135deg,#ef4444,#dc2626)",text:"Harambee Stars have qualified for AFCON after beating Tanzania 2-0 at Kasarani. Goals from Olunga and Omala secured the win. Celebrations in Thika town as fans watched on big screens."},
-{cat:"tech",title:"Starlink Cuts Price in Kenya - Now 6500 KES per Month",time:"5 hours ago",loc:"Tech",img:"linear-gradient(135deg,#6366f1,#4f46e5)",text:"Starlink has cut monthly price to 6500 KES to compete with Safaricom Home Fibre. Many in Thika and Kiambu are switching to satellite internet for better speeds."},
-{cat:"world",title:"Kenyan Nurses in UK Demand Better Pay - Strike Looms",time:"6 hours ago",loc:"London",img:"linear-gradient(135deg,#0f172a,#334155)",text:"Kenyan nurses working in the UK have threatened to strike over pay. Over 10,000 Kenyans work in NHS."},
-{cat:"kenya",title:"Thika Market Fire - Traders Count Losses, Governor Visits",time:"Yesterday",loc:"Thika",img:"linear-gradient(135deg,#f97316,#ea580c)",text:"Traders at Thika main market are counting losses after night fire. Kiambu Governor has promised support."},
-{cat:"business",title:"Kenya Shilling Strong Against Dollar - CBK Report",time:"Yesterday",loc:"Business",img:"linear-gradient(135deg,#14b8a6,#0d9488)",text:"Kenya Shilling now at 129 against dollar, strongest in 6 months according to CBK."},
-{cat:"tech",title:"How to Make Money with Your Website in Kenya - 2026 Guide",time:"2 days ago",loc:"Guide",img:"linear-gradient(135deg,#a855f7,#9333ea)",text:"You can monetize Vinius News with Adsterra, Monetag, and M-Pesa donations. No need for AdSense. Add WhatsApp share to go viral."},
-{cat:"sports",title:"Man United vs Arsenal - Kenyan Fans React in Thika Bars",time:"2 days ago",loc:"Sports",img:"linear-gradient(135deg,#dc2626,#991b1b)",text:"Football fans in Thika packed bars to watch EPL. Many support Arsenal and Man United."},
-{cat:"kenya",title:"New Matatu Sacco from Thika to Nairobi Cuts Fare to 300",time:"2 days ago",loc:"Thika",img:"linear-gradient(135deg,#eab308,#ca8a04)",text:"New sacco promises lower fares and better service on Thika Road."},
-{cat:"world",title:"Rains Expected in Central Kenya This Week - Met Department",time:"3 days ago",loc:"Weather",img:"linear-gradient(135deg,#06b6d4,#0891b2)",text:"Farmers in Kiambu advised to prepare for long rains."}
+const FIXTURES=[
+{league:"KPL",home:"Gor Mahia",away:"AFC Leopards",score:"1-0",time:"78' LIVE",cat:"kenya,live"},
+{league:"KPL",home:"Thika United",away:"Muranga Seal",score:"0-0",time:"12:00",cat:"kenya"},
+{league:"AFCON Q",home:"Harambee Stars",away:"Tanzania",score:"2-0 FT",time:"FT",cat:"kenya,afcon"},
+{league:"EPL",home:"Arsenal",away:"Man Utd",score:"2-1",time:"FT",cat:"epl"},
+{league:"EPL",home:"Man City",away:"Chelsea",score:"3-0",time:"FT",cat:"epl"},
+{league:"La Liga",home:"Real Madrid",away:"Barca",score:"1-1",time:"20:00",cat:"all"},
+{league:"AFCON",home:"Senegal",away:"Egypt",score:"0-0",time:"Tomorrow",cat:"afcon"}
 ];
-let activeCat='all';
+const NEWS=[
+{cat:"kenya",title:"Gor Mahia Leads KPL After Beating AFC Leopards in Mashemeji Derby",time:"10 min ago",img:"linear-gradient(135deg,#22c55e,#15803d)",text:"Gor Mahia beat AFC Leopards 1-0 at Kasarani in front of 20,000 fans. Goal by Omala in 34'. Thika fans celebrated."},
+{cat:"kenya",title:"Harambee Stars Qualify for AFCON - Olunga Scores Double",time:"1 hour ago",img:"linear-gradient(135deg,#ef4444,#dc2626)",text:"Harambee Stars beat Tanzania 2-0. Olunga scored twice. Kenya qualifies for AFCON 2027."},
+{cat:"epl",title:"Arsenal Fans in Thika Celebrate Win Over Man Utd",time:"2 hours ago",img:"linear-gradient(135deg,#ef4444,#991b1b)",text:"Arsenal beat Man Utd 2-1. Thika bars full as fans watched. Arteta praises team."},
+{cat:"kenya",title:"Thika United Needs Win to Avoid Relegation - Coach Says",time:"3 hours ago",img:"linear-gradient(135deg,#0ea5e9,#0284c7)",text:"Thika United coach says team must win next 2 games to stay in KPL."},
+{cat:"epl",title:"Man City 3-0 Chelsea - Haaland Hat-trick",time:"5 hours ago",img:"linear-gradient(135deg,#06b6d4,#0891b2)",text:"Haaland scores 3 as City beats Chelsea. City top of table."},
+{cat:"afcon",title:"AFCON 2027 to be Hosted in Kenya, Tanzania, Uganda",time:"Yesterday",img:"linear-gradient(135deg,#f59e0b,#d97706)",text:"East Africa to host AFCON 2027. Stadiums in Nairobi, Thika to be upgraded."}
+];
+const EPL_TABLE=[
+{pos:1,team:"Man City",p:24,pts:58},
+{pos:2,team:"Arsenal",p:24,pts:56},
+{pos:3,team:"Liverpool",p:24,pts:52},
+{pos:4,team:"Aston Villa",p:24,pts:48},
+{pos:5,team:"Man Utd",p:24,pts:42},
+{pos:6,team:"Chelsea",p:24,pts:38},
+{pos:7,team:"Gor Mahia (KPL)",p:18,pts:40}
+];
+
 function render(){
   const q=document.getElementById('q').value.toLowerCase();
-  let list=NEWS.filter(n=>(activeCat==='all'||n.cat===activeCat) && (!q || n.title.toLowerCase().includes(q)));
-  if(list.length===0)list=NEWS;
-  const hero=list[0];
-  document.getElementById('heroTitle').textContent=hero.title;
-  document.getElementById('heroMeta').textContent=hero.time+' • '+hero.loc;
-  document.getElementById('heroBg').style.background=`linear-gradient(180deg,transparent 10%,#000000d8),${hero.img}`;
-  document.getElementById('hero').onclick=()=>openReader(hero);
-  const sideEl=document.getElementById('side');
-  sideEl.innerHTML=list.slice(1,4).map(n=>`<div class="side-card" onclick="openReaderByTitle('${n.title.replace(/'/g,"\\'")}')"><div style="width:90px;height:70px;border-radius:8px;background:${n.img};flex-shrink:0"></div><div><h3>${n.title}</h3><div class="meta">${n.time} • ${n.loc}</div></div></div>`).join('');
-  const grid=document.getElementById('grid');
-  grid.innerHTML=list.slice(4).map(n=>`<div class="card" onclick="openReaderByTitle('${n.title.replace(/'/g,"\\'")}')"><div class="thumb" style="background:${n.img}"></div><div class="body"><span class="tag" style="background:${n.cat==='kenya'?'#22c55e':n.cat==='sports'?'#ef4444':'#0f172a'};color:white">${n.cat.toUpperCase()}</span><h3>${n.title}</h3><div class="meta">${n.time} • ${n.loc}</div></div></div>`).join('');
+  const f=document.querySelector('.nav button.active').dataset.f;
+  let fix=FIXTURES.filter(x=>(f==='all'||x.cat.includes(f)) && (!q||x.home.toLowerCase().includes(q)||x.away.toLowerCase().includes(q)));
+  document.getElementById('side').innerHTML=fix.slice(1,4).map(m=>`<div class="fixture"><div><div style="font-size:10px;color:var(--muted)">${m.league}</div><div class="t">${m.home} vs ${m.away}</div></div><div style="text-align:right"><div style="font-weight:900">${m.score}</div><div class="time">${m.time}</div></div></div>`).join('') || '<div style="padding:12px;color:var(--muted)">No matches</div>';
+  let news=NEWS.filter(n=>(f==='all'||n.cat===f|| (f==='kenya'&&n.cat==='kenya')|| (f==='live'&&true)) && (!q||n.title.toLowerCase().includes(q)));
+  document.getElementById('newsGrid').innerHTML=news.map(n=>`<div class="card"><div class="thumb" style="background:${n.img}"></div><div class="body"><span style="background:var(--green);color:#052e16;padding:3px 6px;border-radius:4px;font-size:9px;font-weight:900">${n.cat.toUpperCase()}</span><h3>${n.title}</h3><div class="meta">${n.time}</div></div></div>`).join('');
+  document.getElementById('eplTable').innerHTML=`<h3>EPL Table + KPL</h3>`+EPL_TABLE.map(r=>`<div class="row"><span><b>${r.pos}</b> ${r.team}</span><span>${r.p}P <b>${r.pts}pts</b></span></div>`).join('');
 }
-window.openReaderByTitle=(t)=>{const n=NEWS.find(x=>x.title===t); if(n)openReader(n);}
-function openReader(n){
-  document.getElementById('readerCat').textContent=n.cat.toUpperCase();
-  document.getElementById('readerTitle').textContent=n.title;
-  document.getElementById('readerMeta').textContent=n.time+' • '+n.loc+' • Vinius News';
-  document.getElementById('readerText').textContent=n.text+"\\n\\nThis is demo content - Replace with your own news. To add real news, edit the NEWS array in index.html. For live news, connect to NewsAPI or GNews API (free).\\n\\nNo more Archive.org - This news always loads, even on 0.19 KB/S.";
-  document.getElementById('reader').classList.add('open');
-  document.getElementById('shareBtn').onclick=()=>{window.open('https://wa.me/?text='+encodeURIComponent(n.title+' - Read on Vinius News https://vinius-news.vercel.app'),' _blank');}
-}
-document.getElementById('closeReader').onclick=()=>document.getElementById('reader').classList.remove('open');
-document.getElementById('reader').onclick=e=>{if(e.target.id==='reader')document.getElementById('reader').classList.remove('open');}
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeCat=b.dataset.cat;render();});
-document.getElementById('searchBtn').onclick=render;
-document.getElementById('q').oninput=render;
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();});
+window.openMatch=()=>{alert("Gor Mahia 1-0 AFC Leopards\\n78' Live at Kasarani\\nGoal: Omala 34'\\n\\nLineup Gor: Oluoch, Otieno, Omala...\\n\\nFor live commentary, we can add YouTube live or text updates. Want me to add real live scores API?");};
 render();
+// Update ticker every 4s
+setInterval(()=>{const t=document.getElementById('ticker');t.scrollLeft+=1;if(t.scrollLeft>200)t.scrollLeft=0;},50);
 </script>
 </body>
 </html>

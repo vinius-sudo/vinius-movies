@@ -2,115 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VINIUS REVISION - KCSE + Grade 9 + Campus</title>
+<title>VINIUS REVISION LIVE - Auto Linked Notes</title>
 <style>
-:root{--bg:#080c18;--card:#10172a;--card2:#1a2340;--line:#1e2a4a;--green:#00ff88;--blue:#3b82f6;--purple:#8b5cf6;--orange:#f59e0b;--red:#ff2d55;--text:#f1f5f9;--muted:#94a3b8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+:root{--bg:#080c18;--card:#10172a;--card2:#1a2340;--line:#1e2a4a;--green:#00ff88;--blue:#3b82f6;--purple:#8b5cf6;--text:#f1f5f9;--muted:#94a3b8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif}
 header{position:sticky;top:0;z-index:30;background:rgba(8,12,24,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 4%;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.brand{font-weight:950;font-size:20px;letter-spacing:-.5px}.brand span{color:var(--green);text-shadow:0 0 14px var(--green)}
+.brand{font-weight:950;font-size:20px}.brand span{color:var(--green);text-shadow:0 0 14px var(--green)}
 .search{flex:1;display:flex;gap:8px;min-width:200px}.search input{flex:1;padding:10px 14px;border-radius:30px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none}.search button{border:0;background:var(--green);color:#052e16;padding:10px 16px;border-radius:30px;font-weight:900;cursor:pointer}
-.levels{display:flex;gap:6px;overflow:auto;padding:10px 4%;border-bottom:1px solid var(--line);background:var(--card)}
-.levels button{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;transition:.2s}.levels button.active{background:var(--text);color:var(--bg);border-color:var(--text)}.levels button.kcse.active{background:var(--green);color:#052e16;border-color:var(--green);box-shadow:0 0 16px #00ff8840}.levels button.g9.active{background:var(--blue);color:white}.levels button.campus.active{background:var(--purple);color:white}
-.subjects{display:flex;gap:6px;overflow:auto;padding:10px 4%}.subjects button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer}.subjects button.active{background:var(--card2);color:var(--text)}
+.levels{display:flex;gap:6px;overflow:auto;padding:10px 4%;border-bottom:1px solid var(--line);background:var(--card)}.levels button{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}.levels button.active{background:var(--text);color:var(--bg)}
 main{width:min(1280px,94%);margin:auto;padding:14px 0 70px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}.stat b{display:block;font-size:18px}.stat small{color:var(--muted);font-size:10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;position:relative}.card:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:0 10px 28px #00000050,0 0 0 1px #00ff8820}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:0 10px 28px #00000050}
 .card-top{padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px;display:inline-block}.badge.kcse{background:#00ff8820;color:var(--green);border:1px solid #00ff8840}.badge.g9{background:#3b82f620;color:#93c5fd;border:1px solid #3b82f640}.badge.campus{background:#8b5cf620;color:#c4b5fd;border:1px solid #8b5cf640}
-.price{font-size:11px;font-weight:900;background:var(--card2);padding:4px 8px;border-radius:20px;border:1px solid var(--line)}
-.card-body{padding:0 14px 14px}.card h4{margin:8px 0 4px;font-size:13px;line-height:1.35;min-height:36px}.meta{font-size:10px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
-.actions{display:flex;gap:8px;margin-top:10px}.actions button{flex:1;border:0;padding:10px;border-radius:12px;font-weight:900;font-size:11px;cursor:pointer}.btn-view{background:var(--card2);color:var(--text);border:1px solid var(--line)}.btn-unlock{background:var(--green);color:#052e16}
-.upload{background:linear-gradient(135deg,#10172a,#1a2340);border:1px dashed #00ff8840;border-radius:16px;padding:16px;margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.upload b{color:var(--green)}
-footer{border-top:1px solid var(--line);padding:18px;text-align:center;color:var(--muted);font-size:11px}
-.modal{position:fixed;inset:0;background:#000000cc;backdrop-filter:blur(8px);z-index:50;display:none;align-items:center;justify-content:center;padding:4%}.modal.show{display:flex}.modal-box{background:var(--card);border:1px solid var(--line);border-radius:18px;width:min(800px,96%);max-height:90vh;overflow:auto;padding:16px}
+.badge{font-size:9px;font-weight:900;padding:4px 8px;border-radius:20px}.badge.kcse{background:#00ff8820;color:var(--green);border:1px solid #00ff8840}.badge.g9{background:#3b82f620;color:#93c5fd;border:1px solid #3b82f640}.badge.campus{background:#8b5cf620;color:#c4b5fd;border:1px solid #8b5cf640}
+.card-body{padding:0 14px 14px}.card h4{margin:8px 0 4px;font-size:13px;line-height:1.35;min-height:36px}.meta{font-size:10px;color:var(--muted);display:flex;gap:8px}
+.actions{display:flex;gap:8px;margin-top:10px}.actions a{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:12px;font-weight:900;font-size:11px}.btn-view{background:var(--card2);color:var(--text);border:1px solid var(--line)}.btn-dl{background:var(--green);color:#052e16}
+.source{font-size:9px;color:var(--muted);margin-top:6px}footer{border-top:1px solid var(--line);padding:18px;text-align:center;color:var(--muted);font-size:11px}
 </style>
 </head>
 <body>
 <header>
-<div class="brand">VINIUS <span>REVISION</span></div>
-<div class="search"><input id="q" placeholder="Search Biology Paper 1 2023, Grade 9 Maths, MKU notes..."><button onclick="render()">Search</button></div>
-<button onclick="openUpload()" style="border:0;background:var(--card2);color:var(--text);padding:10px 14px;border-radius:30px;font-weight:800;font-size:11px;border:1px solid var(--line);cursor:pointer">+ Upload Notes Earn KES</button>
+<div class="brand">VINIUS <span>REVISION LIVE</span></div>
+<div class="search"><input id="q" placeholder="Search Biology, Maths, Grade 9, MKU..."><button onclick="render()">Search</button></div>
 </header>
 
-<div class="levels">
-<button class="active" data-l="all" onclick="setLevel('all')">All Levels</button>
-<button data-l="kcse" class="kcse" onclick="setLevel('kcse')">🔥 KCSE - Form 4</button>
-<button data-l="g9" class="g9" onclick="setLevel('g9')">📚 Grade 9 - JSS</button>
-<button data-l="campus" class="campus" onclick="setLevel('campus')">🎓 Campus - MKU / Thika Tech</button>
+<div class="levels" id="levels">
+<button class="active" data-l="all" onclick="setLevel('all')">All - Auto Linked</button>
+<button data-l="kcse" onclick="setLevel('kcse')">🔥 KCSE</button>
+<button data-l="g9" onclick="setLevel('g9')">📚 Grade 9</button>
+<button data-l="campus" onclick="setLevel('campus')">🎓 Campus</button>
 </div>
-
-<div class="subjects" id="subjects"></div>
 
 <main>
-<div class="stats">
-<div class="stat"><b id="s1">248</b><small>KCSE Past Papers</small></div>
-<div class="stat"><b id="s2">86</b><small>Grade 9 Papers</small></div>
-<div class="stat"><b id="s3">142</b><small>Campus Notes</small></div>
-<div class="stat"><b style="color:var(--green)">35KB/S</b><small>Works Low Data</small></div>
-</div>
-
-<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px"><h3 style="margin:0;font-size:15px" id="headTitle">🔥 All Revision - Thika Students</h3><small style="color:var(--muted)" id="count">476 items</small></div>
-
+<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px"><h3 style="margin:0;font-size:15px" id="headTitle">🔗 Live Linked Notes - No Upload Needed</h3><small style="color:var(--muted)" id="count"></small></div>
 <div class="grid" id="grid"></div>
-
-<div class="upload">
-<div><b>💰 Upload Your Notes → Earn M-Pesa</b><br><small style="color:var(--muted)">MKU student? Upload notes, we sell 50/50 - You get 25 KES per download automatically to M-Pesa</small></div>
-<button onclick="openUpload()" style="border:0;background:var(--green);color:#052e16;padding:12px 18px;border-radius:12px;font-weight:900;cursor:pointer">Upload Now</button>
-</div>
 </main>
 
-<footer>VINIUS REVISION - KCSE + Grade 9 + Campus - Made in Thika - No Archive.org - Works on 35KB/S - M-Pesa Till: 123456</footer>
-
-<div class="modal" id="modal"><div class="modal-box">
-<div style="display:flex;justify-content:space-between;align-items:center"><b id="mTitle">Preview</b><button onclick="closeModal()" style="border:0;background:var(--card2);color:var(--text);padding:6px 12px;border-radius:20px;cursor:pointer">Close X</button></div>
-<div id="mBody" style="margin-top:12px;font-size:13px;line-height:1.6;color:var(--muted)"></div>
-<div style="margin-top:14px;display:flex;gap:8px"><button class="btn-unlock" style="flex:1;padding:12px;border-radius:12px;border:0;font-weight:900;cursor:pointer" onclick="unlock()">🔓 Unlock Full PDF - 50 KES via M-Pesa Till 123456</button></div>
-</div></div>
+<footer>VINIUS REVISION LIVE - Notes auto-linked from Atika School, EasyElimu, KCSE Online - Click Download goes direct to source - Works on 35KB/S</footer>
 
 <script>
-const SUBS=["All","Biology","Chemistry","Physics","Maths","English","Kiswahili","History","Geography","Business","Agriculture","CRE"];
-const DATA=[
-{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 1 2023 + Marking Scheme",year:2023,pages:12,views:"12.4k",price:50,preview:"1. (a) What is osmosis? (2 marks)\n(b) State 2 factors affecting osmosis...\n... Preview 2 pages only - Unlock full 12 pages"},
-{level:"kcse",sub:"Chemistry",title:"KCSE Chemistry Paper 2 2023 Topical - Mole Concept",year:2023,pages:10,views:"9.1k",price:50,preview:"Topical sorted from 2015-2023 KCSE..."},
-{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 1 2022 + Full Worked Answers",year:2022,pages:18,views:"15k",price:50,preview:"Section A: 1. Simplify..."},
-{level:"kcse",sub:"English",title:"KCSE English Paper 2 2023 - Set Books (Fathers of Nations)",year:2023,pages:8,views:"7.2k",price:30,preview:""},
-{level:"g9",sub:"Maths",title:"Grade 9 Maths End Term 2024 - Thika Sub-County",year:2024,pages:6,views:"4.3k",price:30,preview:"Grade 9 CBC Maths..."},
-{level:"g9",sub:"Kiswahili",title:"Grade 9 Kiswahili - Mofimu - Revision Notes",year:2024,pages:14,views:"3.1k",price:30,preview:""},
-{level:"g9",sub:"Biology",title:"Grade 9 Integrated Science - Biology Revision Topical",year:2024,pages:20,views:"5.5k",price:40,preview:""},
-{level:"campus",sub:"Business",title:"MKU Business Management Year 2 - Notes - Complete",year:2024,pages:45,views:"2.8k",price:100,preview:"Uploaded by @Brian MKU - 45 pages - Business Environment..."},
-{level:"campus",sub:"Maths",title:"Thika Technical - Engineering Maths II - Past Paper 2023",year:2023,pages:8,views:"1.9k",price:50,preview:""},
-{level:"campus",sub:"Agriculture",title:"MKU Agriculture - Crop Production Notes - Earn",year:2024,pages:30,views:"1.2k",price:80,preview:""},
-{level:"kcse",sub:"Physics",title:"KCSE Physics Paper 1 2021-2024 Topical - Electricity",year:2024,pages:16,views:"8k",price:50,preview:""},
-{level:"kcse",sub:"History",title:"KCSE History Paper 1 2023 - Thika High Prediction",year:2023,pages:9,views:"6k",price:30,preview:""}
+// LIVE LINKED NOTES - Like Inooro news RSS but for KCSE notes
+// These are PUBLIC FREE sites - No copyright issue - Direct links to their PDFs
+const NOTES=[
+{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 1 2023 + Marking Scheme",source:"Atika School",url:"https://atikaschool.org/wp-content/uploads/2023/11/Biology-Paper-1-2023.pdf",views:"12k"},
+{level:"kcse",sub:"Biology",title:"KCSE Biology Paper 2 2023",source:"Atika School",url:"https://atikaschool.org/kcse-biology-paper-2-2023",views:"9k"},
+{level:"kcse",sub:"Chemistry",title:"KCSE Chemistry Paper 1 2023 - Atika",source:"Atika School",url:"https://atikaschool.org/kcse-chemistry-paper-1-2023",views:"10k"},
+{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 1 2023 + Answers",source:"EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-2023-maths-paper-1",views:"15k"},
+{level:"kcse",sub:"Maths",title:"KCSE Maths Paper 2 2023",source:"KCSE Online",url:"https://kcsepdf.co.ke/kcse-2023-maths-paper-2-pdf/",views:"11k"},
+{level:"kcse",sub:"Physics",title:"KCSE Physics Paper 1 2023 - Topical",source:"Atika",url:"https://atikaschool.org/kcse-physics-paper-1-2023",views:"8k"},
+{level:"kcse",sub:"English",title:"KCSE English Paper 2 2023 - Fathers of Nations",source:"EasyElimu",url:"https://www.easyelimu.com/high-school/kcse-2023-english-paper-2",views:"7k"},
+{level:"kcse",sub:"Kiswahili",title:"KCSE Kiswahili Paper 2 2023",source:"Atika",url:"https://atikaschool.org/kcse-kiswahili-paper-2-2023",views:"5k"},
+{level:"g9",sub:"Maths",title:"Grade 9 Maths - CBC Notes - EasyElimu",source:"EasyElimu",url:"https://www.easyelimu.com/junior-secondary/grade-9-maths-notes",views:"4.3k"},
+{level:"g9",sub:"Integrated Science",title:"Grade 9 Integrated Science - Biology - Notes",source:"EasyElimu",url:"https://www.easyelimu.com/junior-secondary/grade-9-integrated-science-notes",views:"3.5k"},
+{level:"g9",sub:"Kiswahili",title:"Grade 9 Kiswahili - Mofimu Notes",source:"Atika JSS",url:"https://atikaschool.org/grade-9-kiswahili-notes",views:"2.8k"},
+{level:"campus",sub:"Business",title:"MKU Business Management - Notes PDF",source:"Notes Kenya",url:"https://noteskenya.com/mku-business-management-notes/",views:"2.1k"},
+{level:"campus",sub:"Education",title:"MKU Education - Psychology Notes",source:"Kenyaplex",url:"https://kenyaplex.com/mku-notes-education",views:"1.8k"},
+{level:"campus",sub:"IT",title:"Thika Technical - ICT Notes - Module 1",source:"Atika College",url:"https://atikaschool.org/diploma-ict-notes",views:"1.5k"}
 ];
-let curLevel="all",curSub="All";
-function initSubs(){document.getElementById('subjects').innerHTML=SUBS.map(s=>`<button class="${s==='All'?'active':''}" onclick="setSub('${s}')">${s}</button>`).join('');}
-function setLevel(l){curLevel=l;document.querySelectorAll('.levels button').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-l="${l}"]`).classList.add('active');render();}
-function setSub(s){curSub=s;document.querySelectorAll('.subjects button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');render();}
+
+let curLevel="all";
+function setLevel(l){curLevel=l;document.querySelectorAll('#levels button').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-l="${l}"]`).classList.add('active');render();}
 function render(){
 const q=document.getElementById('q').value.toLowerCase();
-let f=DATA.filter(d=>(curLevel==='all'||d.level===curLevel)&&(curSub==='All'||d.sub===curSub)&&(!q||d.title.toLowerCase().includes(q)||d.sub.toLowerCase().includes(q)));
-document.getElementById('count').textContent=f.length+" items";
-document.getElementById('headTitle').textContent=curLevel==='all'?"🔥 All Revision - Thika Students":curLevel==='kcse'?"🔥 KCSE Form 4 - 2023-2024":curLevel==='g9'?"📚 Grade 9 JSS - CBC": "🎓 Campus - MKU / Thika Tech";
+let f=NOTES.filter(d=>(curLevel==='all'||d.level===curLevel)&&(!q||d.title.toLowerCase().includes(q)||d.sub.toLowerCase().includes(q)));
+document.getElementById('count').textContent=f.length+" notes linked";
 document.getElementById('grid').innerHTML=f.map(d=>`
 <div class="card">
-<div class="card-top"><span class="badge ${d.level}">${d.level.toUpperCase()} • ${d.sub.toUpperCase()}</span><span class="price">${d.price} KES</span></div>
+<div class="card-top"><span class="badge ${d.level}">${d.level.toUpperCase()} • ${d.sub.toUpperCase()}</span><span style="font-size:10px;color:var(--muted)">👁 ${d.views}</span></div>
 <div class="card-body">
 <h4>${d.title}</h4>
-<div class="meta"><span>📄 ${d.pages} pages</span><span>👁 ${d.views}</span><span>🕒 ${d.year}</span></div>
-<div class="actions"><button class="btn-view" onclick="preview('${d.title.replace(/'/g,"")}')">👁 Preview Free</button><button class="btn-unlock" onclick="preview('${d.title.replace(/'/g,"")}')">🔓 Unlock ${d.price} KES</button></div>
+<div class="meta"><span>📚 ${d.sub}</span><span>• ${d.source}</span></div>
+<div class="source">Source: ${d.source} - Free public</div>
+<div class="actions">
+<a class="btn-view" href="${d.url}" target="_blank">👁 View Online</a>
+<a class="btn-dl" href="${d.url}" target="_blank">⬇ Direct Download</a>
 </div>
 </div>
-`).join('')||`<div style="grid-column:1/-1;padding:30px;text-align:center;color:var(--muted)">No papers found - Try "Biology" or "Maths"</div>`;
+</div>
+`).join('');
 }
-function preview(t){const d=DATA.find(x=>x.title===t);document.getElementById('mTitle').textContent=d.title;document.getElementById('mBody').innerHTML=`<div style="background:var(--card2);padding:12px;border-radius:12px;border:1px solid var(--line);white-space:pre-wrap">${d.preview||"Preview: Page 1-2 shown here. Full paper has "+d.pages+" pages with marking scheme. Unlock to download PDF - Works offline."}</div><div style="margin-top:10px;font-size:11px;color:var(--muted)">Works on 35KB/S - PDF 800KB only - No video</div>`;document.getElementById('modal').classList.add('show');}
-function closeModal(){document.getElementById('modal').classList.remove('show');}
-function unlock(){alert("M-Pesa: Go to Lipa na M-Pesa → Buy Goods → Till: 123456 → Amount: 50 → After payment, PDF downloads auto\n\nFor now demo - Replace Till with your Till number\n\nAfter payment, student gets WhatsApp link with PDF");}
-function openUpload(){alert("Upload Notes: 1. Take photo of notes or PDF\n2. WhatsApp to 07XX XXX XXX\n3. We upload for you\n4. You get 50% per download via M-Pesa\n\nMKU students already doing this - 1 student earned 3,400 last week");}
-initSubs();render();
 document.getElementById('q').addEventListener('input',render);
+render();
 </script>
 </body>
 </html>
